@@ -1,3 +1,7 @@
+# Video explanation: https://www.youtube.com/watch?v=kgBjXUE_Nwc
+# (including bubble sort)
+
+# Merge sort scales: input size x log input size : n * log n
 # 1) Recursively sort first half of input array
 # 2) Recursively sort second half of input array
 # 3) Merge two sorted sublists into one
@@ -63,12 +67,27 @@
 # 5: sort each merged list
 # 6: repeat steps 4 and 5 until the entire list is sorted
 
+# Recursive function calls are just like regular functions there is nothing special about them. So when
+# you return aList it goes back up one function call to whatever called merge_sort and continues executing.
+# If aList has a length greater than one it goes and recurses. In your case that means it will call merge_sort
+# on the left:
+# left = merge_sort(left)
+# And than on the right:
+# right = merge_sort(right)
+# And than executes:
+# return list(merge(left, right))
+
+# The downward descent of recursion ends when you get to lists of length 1. However, all of mergesort's actual sorting
+# is done on the way up. For a simple example, here's an 8-element unsorted list:
+# (8, 4, 7, 2, 1, 5, 3, 6)
+# Step 1: separate: (8) (4) (7) (2) (1) (5) (3) (6). This is the deepest part of your recursion.
+# Step 2: Go up 1 level in the recursion. Begin merging, first to lists of length 2. (4, 8) (2, 7) (1, 5) (3, 6).
+# Step 3: Go up another level in recursion. Merge to lists of length 4. (2, 4, 7, 8) (1, 3, 5, 6).
+# Step 4: Go up to the final level of recursion. The final list is (1, 2, 3, 4, 5, 6, 7, 8).
+
 # -------------------------------------------------
 # --------------- THE CODE ------------------------
 # -------------------------------------------------
-
-list1 = [2, 1, 3, 0]
-list2 = [2, 5, 10, 99, 8, 13, 2, 1, 3, 0]
 
 
 def merge_sort(alist):
@@ -102,5 +121,56 @@ def merge(left, right):
         result.extend(right[right_idx:])
     return result
 
-print merge_sort(list2)
-print merge_sort(list1)
+# -------------------------------------------------
+# --------THE CODE WITH PRINT COMMENTS ------------
+# -------------------------------------------------
+
+
+def merge_sort_commented(alist):
+    """ merge_sort with print statements """
+    print ""
+    print "+++++++++++++ MERGE SORT CALL ++++++++++++++++++"
+    print "calling merge_sort with: ", alist
+    if len(alist) <= 1:
+        print "reached base case with: ", alist
+        return alist
+    middle = len(alist) / 2
+    left = alist[:middle]
+    right = alist[middle:]
+    left = merge_sort_commented(left)
+    right = merge_sort_commented(right)
+    print "right is: ", right
+    print "left is: ", left
+    toreturn = list(merge_commented(left, right))
+    print "merge_sort is returning: ", toreturn
+    print "++++++++++++ END MERGE SORT CALL ++++++++++++++"
+    print ""
+    return toreturn
+
+
+def merge_commented(left, right):
+    """ merge with print statements """
+    print ""
+    print "    -------- MERGE CALL ----------"
+    print "    calling merge with: ", left, right
+    result = []
+    left_idx, right_idx = 0, 0
+    while left_idx < len(left) and right_idx < len(right):
+        if left[left_idx] <= right[right_idx]:
+            result.append(left[left_idx])
+            left_idx += 1
+        else:
+            result.append(right[right_idx])
+            right_idx += 1
+    if left:
+        result.extend(left[left_idx:])
+    if right:
+        result.extend(right[right_idx:])
+    print "    returning: ", result
+    print "    ------ END MERGE CALL --------"
+    print ""
+    return result
+
+alist = [1, 2, 3, 4]
+
+merge_sort_commented(alist)
