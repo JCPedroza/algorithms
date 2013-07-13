@@ -1,3 +1,4 @@
+# Extra resources:
 # Video explanation: https://www.youtube.com/watch?v=kgBjXUE_Nwc
 # (including bubble sort)
 
@@ -84,6 +85,13 @@
 # Step 2: Go up 1 level in the recursion. Begin merging, first to lists of length 2. (4, 8) (2, 7) (1, 5) (3, 6).
 # Step 3: Go up another level in recursion. Merge to lists of length 4. (2, 4, 7, 8) (1, 3, 5, 6).
 # Step 4: Go up to the final level of recursion. The final list is (1, 2, 3, 4, 5, 6, 7, 8).
+# def merge_sort
+#      <split lists> # this is done on the way down
+#      <merge_sort on left list>
+#      <merge_sort on right list>
+#      <merge lists together> # this is done on the way up
+# Once the recursive calls end, you still have to do the <merge lists together> step. The function isn't returning
+# when it finishes the recursive calls, rather it has to do another step (merging) first.
 
 # -------------------------------------------------
 # --------------- THE CODE ------------------------
