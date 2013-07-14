@@ -1,3 +1,6 @@
+import random
+
+
 def bubble_sort(alist):
     return_list = alist
     length = len(return_list) - 1
@@ -15,6 +18,7 @@ def bubble_sort(alist):
     return return_list
 
 
+# Counting only the numbers of comparisons made.
 def bubble_sort_counter(alist):
     return_list = alist
     length = len(return_list) - 1
@@ -28,17 +32,19 @@ def bubble_sort_counter(alist):
             # Counts iteration
             counter += 1
             if return_list[e] > return_list[e + 1]:
-                # Counts comparison
-                counter += 1
                 # flag that there was a swap in the scan
                 is_sorted = False
                 # swap items
                 return_list[e], return_list[e + 1] = return_list[e + 1], return_list[e]
                 # Counts swap (should I be adding 2 instead of 1?)
-                counter += 1
-    return return_list, counter
+    return counter
 
-print bubble_sort_counter(([4,3,2,1]))
-print bubble_sort_counter([5,4,3,2,1])
-print bubble_sort_counter([6,5,4,3,2,1])
-print bubble_sort_counter([7,6,5,4,3,2,1])
+list5000 = [random.randrange(0, 10) for e in range(5000)]
+list10000 = [random.randrange(0, 10) for e in range(10000)]
+# list30000 = [random.randrange(0, 10) for e in range(30000)]
+# list50000 = [random.randrange(0, 10) for e in range(50000)]
+
+print "5000: ", bubble_sort_counter(list5000)
+print "10000: ", bubble_sort_counter(list10000)
+# print "30000: ", bubble_sort_counter(list30000)
+# print "50000: ", bubble_sort_counter(list50000)
