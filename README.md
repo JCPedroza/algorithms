@@ -1,4 +1,4 @@
-algorithms_course_1
+Algorithms
 ===================
 
-Code for the course: Algorithms: Design and Analysis, Part 1 
+Study of algorithms. 
