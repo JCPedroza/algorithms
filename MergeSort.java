@@ -6,4 +6,8 @@ public class MergeSort{
     public static void main(String[] args){
         System.out.println("MergeSort algorithm");
     }
+    
+    ArrayList<int> aList = new ArrayList<int>();
+
+    
 }
