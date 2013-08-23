@@ -1,3 +1,6 @@
+/**
+* Quick-find (eager approach) class for dealing with dynamic connectivity. 
+*/
 public class QuickFindUF{
     
     /**
@@ -9,6 +12,7 @@ public class QuickFindUF{
     /**
     * Creates the array, and sets the ID values for each element of the array.
     * The ID of each element of the array is equal to its index.
+    * @param N Number of objects to be created.
     */
     public QuickFindUF(int N){
         id = new int[N];
@@ -44,3 +48,7 @@ public class QuickFindUF{
         }
     }
 }
+
+// Quick-find is too slow for dynamic connectivity. It doesn't work very well for large arrays. 
+// Quic-find defect: union is too expensive. Takes N^2 (quadratic) array accesses to process sequence
+// of N unions commands on N objects.
