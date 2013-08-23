@@ -1,5 +1,6 @@
 /**
 * Quick-find (eager approach) class for dealing with dynamic connectivity. 
+* Array indexes represent objects. 
 */
 public class QuickFindUF{
     
@@ -23,8 +24,8 @@ public class QuickFindUF{
     
     /**
     * Checks if two objects are connected.
-    * @param p An object.
-    * @param q An object.
+    * @param p An object (array index).
+    * @param q An object (array index).
     * @return True if objects are connected, false if they aren't.
     */
     public boolean connected(int p, int q){
