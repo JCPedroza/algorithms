@@ -1,6 +1,9 @@
 /**
 * Quick-find (eager approach) class for dealing with dynamic connectivity. 
 * Array indexes represent objects. 
+* Quick-find is too slow for dynamic connectivity. It doesn't work very well for large arrays. 
+* Quick-find defect: union is too expensive. Takes N^2 (quadratic) array accesses to process sequence
+* of N unions commands on N objects.
 */
 public class QuickFindUF{
     
@@ -49,7 +52,3 @@ public class QuickFindUF{
         }
     }
 }
-
-// Quick-find is too slow for dynamic connectivity. It doesn't work very well for large arrays. 
-// Quic-find defect: union is too expensive. Takes N^2 (quadratic) array accesses to process sequence
-// of N unions commands on N objects.
