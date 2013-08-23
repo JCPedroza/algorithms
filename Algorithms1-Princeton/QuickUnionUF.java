@@ -1,6 +1,12 @@
 /**
 * Quick-union (lazy approach) class for dealing with dynamic connectivity. 
 * Array indexes represent objects. 
+* We can see that a difference between QuickFindUF and QuickUnionUF is that QuickUnionUF
+* doesn't implement a for loop, but it has a while loop that we have to worry about a little
+* bit; it also has less code. 
+* Quick-union is faster thatn Quick-find, but it is also too slow! Not fast enough.
+* Quick-union defect 1: Trees can get tall.
+* Quick-union defect 2: Find too expensive (could be N array accesses).
 */
 
 public class QuickUnionUF{
