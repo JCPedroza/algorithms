@@ -45,7 +45,7 @@ public class QuickUnionUF{
     }
     
     /**
-    * Change root of p to point to root of 1 (depth of p and q array accesses).
+    * Change root of p to the root of q (depth of p and q array accesses).
     * @param p The object that will change its root to q's root.
     * @param q The object that will share its root with p.
     */
