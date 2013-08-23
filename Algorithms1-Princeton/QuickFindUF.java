@@ -1,5 +1,5 @@
 /**
-* Quick-find (eager approach) class for dealing with dynamic connectivity. 
+* Quick-find (eager approach) union find class for dealing with dynamic connectivity. 
 * Array indexes represent objects. 
 * Quick-find is too slow for dynamic connectivity. It doesn't work very well for large arrays. 
 * Quick-find defect 1: union is too expensive. Takes N^2 (quadratic) array accesses to process sequence

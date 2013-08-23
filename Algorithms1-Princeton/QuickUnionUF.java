@@ -1,5 +1,5 @@
 /**
-* Quick-union (lazy approach) class for dealing with dynamic connectivity. 
+* Quick-union (lazy approach) union find class for dealing with dynamic connectivity. 
 * Array indexes represent objects. 
 * We can see that a difference between QuickFindUF and QuickUnionUF is that QuickUnionUF
 * doesn't implement a for loop, but it has a while loop that we have to worry about a little
