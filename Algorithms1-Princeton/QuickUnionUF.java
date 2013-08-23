@@ -55,7 +55,7 @@ public class QuickUnionUF{
     * @param p The object that will change its root to q's root.
     * @param q The object that will share its root with p.
     */
-    public void void union(int p, int q){
+    public void union(int p, int q){
         int i = root(p);
         int j = root(q);
         id[i] = j;
