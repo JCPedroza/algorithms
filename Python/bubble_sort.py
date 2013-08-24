@@ -1,6 +1,5 @@
 import random
 
-
 def bubble_sort(alist):
     return_list = alist
     length = len(return_list) - 1
@@ -39,6 +38,7 @@ def bubble_sort_counter(alist):
                 # Counts swap (should I be adding 2 instead of 1?)
     return counter
 
+# Timing tests
 list5000 = [random.randrange(0, 10) for e in range(5000)]
 list10000 = [random.randrange(0, 10) for e in range(10000)]
 # list30000 = [random.randrange(0, 10) for e in range(30000)]
