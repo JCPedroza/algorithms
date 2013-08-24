@@ -66,7 +66,7 @@ public class QuickUnionUFImproved{
     * Are objects p and q in the same set, are they connected?
     */
     public boolean connected(int p, int q){
-        return find(p) == find(q);
+        return root(p) == root(q);
     }
 
     public int getCount(){
