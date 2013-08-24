@@ -10,10 +10,8 @@ def bubble_sort(alist):
         is_sorted = True
         for e in range(length):
             if return_list[e] > return_list[e + 1]:
-                # flag that there was a swap in the scan
-                is_sorted = False
-                # swap items
-                return_list[e], return_list[e + 1] = return_list[e + 1], return_list[e]
+                is_sorted = False # flag that there was a swap in the scan
+                return_list[e], return_list[e + 1] = return_list[e + 1], return_list[e] # swap items
     return return_list
 
 
