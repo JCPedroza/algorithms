@@ -68,10 +68,6 @@ public class QuickUnionUFImproved{
     public boolean connected(int p, int q){
         return root(p) == root(q);
     }
-
-    public int getCount(){
-        return count;
-    }
     
     /**
     * Replace sets containing p and q with their union.
@@ -86,6 +82,18 @@ public class QuickUnionUFImproved{
         if   (sz[i] < sz[j]) { id[i] = j; sz[j] += sz[i]; }
         else                 { id[j] = i; sz[i] += sz[j]; }
         count--;
+    }
+
+    public int[] getId(){
+        return id;
+    }
+
+    public int[] getSz(){
+        return sz;
+    }
+
+    public int getCount(){
+        return count;
     }
 
 }

@@ -1,9 +1,10 @@
 /**
-* Quick-union (lazy approach) union find class for dealing with dynamic connectivity. 
-* Array indexes represent objects. 
-* We can see that a difference between QuickFindUF and QuickUnionUF is that QuickUnionUF
-* doesn't implement a for loop, but it has a while loop that we have to worry about a little
-* bit; it also has less code. 
+* Quick-union (lazy approach) union find class for dealing with dynamic connectivity.
+* 
+* Array indexes represent objects. We can see that a difference between QuickFindUF and 
+* QuickUnionUF is that QuickUnionUF doesn't implement a for loop, but it has a while
+* loop that we have to worry about a little bit; it also has less code. 
+* 
 * Quick-union is faster thatn Quick-find, but it is also too slow! Not fast enough.
 * Quick-union defect 1: Trees can get tall.
 * Quick-union defect 2: Find too expensive (could be N array accesses).
@@ -14,13 +15,13 @@ public class QuickUnionUF{
     /**
     * Index represents object, value represents root.
     * If two objects share root (directly or indirectly, they don't need to have 
-    * the same value), they are connected.
+    * the same value), they are connected. id[i] = parent of i
     */
     private int[] id;
     
     /**
-    * Creates the array and sets ID of each object to itself (N array accesses).
-    * @param N Number of objects to be created. 
+    * Create an empty union find data structure with N isolated sets.
+    * @param N Number isolated sets. 
     */
     public QuickUnionUF(int N){
         id = new int[N];
@@ -41,10 +42,7 @@ public class QuickUnionUF{
     }
     
     /**
-    * Check if p and q have same root (depth of p and q array accesses).
-    * @param p An object (array index).
-    * @param q An object (array index).
-    * @return True of objects are connected, false if they aren't.
+    * Are objects p and q in the same set, are they connected?
     */
     public boolean connected(int p, int q){
         return root(p) == root(q);
@@ -59,5 +57,9 @@ public class QuickUnionUF{
         int i = root(p);
         int j = root(q);
         id[i] = j;
+    }
+
+    public int[] getId(){
+        return id;
     }
 }
