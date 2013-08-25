@@ -27,6 +27,8 @@ public class QuickUnionUFImproved{
 
     /**
     * Size of a tree. sz[i] = number of objects in subtree rooted at i
+    * This means that the sz[i] array will only maintain the size for node i and its branches/children, 
+    * not including the objects on the parent side of node i.
     */
     private int[] sz;  
 
