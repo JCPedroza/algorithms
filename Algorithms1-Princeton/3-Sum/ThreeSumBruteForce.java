@@ -1,6 +1,7 @@
 /**
 * 3-Sum algorithm, brute force approach. 
 * It solves the problem: Given N distinct integers, how many triples sum exactly zero?
+* Running time: 10^-10 * N^3 seconds, where N is the number of numbers in the array.
 */
 public class ThreeSumBruteForce{
     
