@@ -4,6 +4,10 @@ import java.lang.reflect.Method; // used for reflection, to use methods as param
 * Class with the main method, used to perform tests on the 3-sum algorithms
 */
 public class ThreeSumTests{
+    
+    // ==========
+    // Helpers
+    // ==========
 
     /**
     * Performs several runs of the algorithms, measuring time and calculating average.
@@ -44,6 +48,26 @@ public class ThreeSumTests{
         // Return average time.
         return sum / arrayLength;
     }
+
+    /**
+    * Generates an array of random numbers
+    * @param size Size of the array to be generated.
+    * @param min  Minimum value.
+    * @param max  Maximum value.
+    * @return An array of random numbers
+    */
+    private static int[] makeRandomArray(int size, int min, int max){
+        int[] returnArray = new int[size];
+        for (int i = 0; i < size; i++) {
+            returnArray[i] = (int) (Math.random() * (max - min + 1)) + min;
+        }
+        return returnArray;
+    }
+
+    
+    // ==========
+    // main()
+    // ==========
 
     public static void main(String[] args){
         
