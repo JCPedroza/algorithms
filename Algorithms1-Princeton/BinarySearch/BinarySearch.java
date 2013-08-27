@@ -5,12 +5,17 @@
 *
 * How it works: Compare key against middle entry. If too small, go left. If too big, go right. 
 * If equal, found.
+*
+* Performance: worst case: logbase2(N) or (lg(N)) --lg means logbase2--
 */
 public class BinarySearch{
-
+    
+    /**
+    * Iterative implementation of Binary Search algorithm.
+    */
     public int binarySearch(int[] a, int key){
         
-        // Determine highes and lowest index:
+        // Determine highest and lowest index:
         int lo = 0;
         int hi = a.length - 1;
 
@@ -25,6 +30,5 @@ public class BinarySearch{
 
         return -1; // Returns -1 if the key was not found
     }
-
-    
+        
 }
