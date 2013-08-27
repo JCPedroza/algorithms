@@ -22,7 +22,9 @@ public class BinarySearch{
             else if (key > a[mid]) lo = mid + 1; // Set a new lo point if key > mid value.
             else return mid;                     // key = mid value, so return the index.
         }
+
+        return -1; // Returns -1 if the key was not found
     }
 
-    return -1; // Returns -1 if the key was not found
+    
 }
