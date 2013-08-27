@@ -26,6 +26,48 @@ var threeSumCount = function(numberArray){
     return count;
 };
 
+// Same as threeSumCount(), but this implementation counts and returns the number of array accesses.
+var threeSumCount2 = function(numberArray){
+
+    var arrayLength = numberArray.length;
+    var count       = 0;
+    var arrayAccess = 0;
+
+    for(var i = 0; i < arrayLength; i++){
+        for(var j = i + 1; j < arrayLength; j++){
+            for(var k = j + 1; k < arrayLength; k++){
+                arrayAccess += 3; // Add 3 to array access count.
+                if(numberArray[i] + numberArray[j] + numberArray[k] === 0){
+                    count ++;
+                }
+            }
+        }
+    }
+
+    return arrayAccess; // !!!Note that it is returning the number of array accesses!!!
+};
+
+// Same as threeSumCount(), but this returns an array of the different states i, j, k had.
+var threeSumCount3 = function(numberArray){
+
+    var arrayLength = numberArray.length;
+    var count       = 0;
+    var ijkValues   = [];
+
+    for(var i = 0; i < arrayLength; i++){
+        for(var j = i + 1; j < arrayLength; j++){
+            for(var k = j + 1; k < arrayLength; k++){
+                ijkValues.push([i, j, k]);
+                if(numberArray[i] + numberArray[j] + numberArray[k] === 0){
+                    count ++;
+                }
+            }
+        }
+    }
+
+    return ijkValues;
+};
+
 // ==================================================
 //                     Test Area
 // ==================================================
@@ -56,12 +98,17 @@ function makeManyRandomArrays(howManyArrays, sizeOfArrays, maxValue, minValue){
 // Array declarations: 
 // ===================
 
+var array0 = [1, -1, 2, -2, 3];
 var array1 = [1, -2, 1, 1];
 var array2 = [3, 4, 5, 6];
 var array3 = makeRandomArray(100, 100, -100);
 
-// Arrays of arrays. Each array has 100 arrays of random numbers, of different sizes
-// arrays10's arrays are size 10, arrays20's arrays are size 20, and so on.
+// Arrays of arrays. 
+
+// There are arrays that cointain arrays of random integers bewteen 100 and -100 of size 100.
+// arrays10 contains 10 arrays, arrays20 contains 20 arrays and so on. This will be used to measure
+// the run time of the Three-sum algorithm with different array sizes, an average run time is 
+// calculated. 
 var arrays10   = makeManyRandomArrays(100, 10, 100, -100);
 var arrays20   = makeManyRandomArrays(100, 20, 100, -100);
 var arrays40   = makeManyRandomArrays(100, 40, 100, -100);
@@ -107,16 +154,22 @@ function timeMeasure(arrayOfArrays){
 
 // Calculate average times, in milliseconds:
 // average10 contains arrays of size 10, average20 contains arrays of size 20, and so on.
-var average10   = timeMeasure(arrays10);
-var average20   = timeMeasure(arrays20);
-var average40   = timeMeasure(arrays40);
-var average80   = timeMeasure(arrays80);
-var average160  = timeMeasure(arrays160);
-var average320  = timeMeasure(arrays320);
-// Caution, the ones below can take a while.
-var average640  = timeMeasure(arrays640);
+// var average10   = timeMeasure(arrays10);
+// var average20   = timeMeasure(arrays20);
+// var average40   = timeMeasure(arrays40);
+// var average80   = timeMeasure(arrays80);
+// var average160  = timeMeasure(arrays160);
+// var average320  = timeMeasure(arrays320);
+// // Caution, the ones below can take a while.
+// var average640  = timeMeasure(arrays640);
 // var average1280 = timeMeasure(arrays1280);
 // var average2560 = timeMeasure(arrays2560);
+
+// ===================
+// Other Tests
+// ===================
+
+var ijkValuesS4 = threeSumCount3(array0);
 
 
 // ===================
@@ -129,15 +182,18 @@ var average640  = timeMeasure(arrays640);
 // console.log(threeSumCount(array2)); // 0
 // console.log(threeSumCount(array3)); // array of random numbers 
 
+// observation of ijk values' dynamics:
+console.log(ijkValuesS4);
+
 // Time results
-console.log("Average running time for arrays of size 10: " + average10);
-console.log("Average running time for arrays of size 20: " + average20);
-console.log("Average running time for arrays of size 40: " + average40);
-console.log("Average running time for arrays of size 80: " + average80);
-console.log("Average running time for arrays of size 160: " + average160);
-console.log("Average running time for arrays of size 320: " + average320);
-// Caution, the ones below can take a while.
-console.log("Average running time for arrays of size 640: " + average640);
-// console.log("Average running time for arrays of size 1280: " + average1280);
-// console.log("Average running time for arrays of size 2560: " + average2560);
+// console.log("Average running time for arrays of size 10: " + average10);
+// console.log("Average running time for arrays of size 20: " + average20);
+// console.log("Average running time for arrays of size 40: " + average40);
+// console.log("Average running time for arrays of size 80: " + average80);
+// console.log("Average running time for arrays of size 160: " + average160);
+// console.log("Average running time for arrays of size 320: " + average320);
+// // Caution, the ones below can take a while.
+// console.log("Average running time for arrays of size 640: " + average640);
+// // console.log("Average running time for arrays of size 1280: " + average1280);
+// // console.log("Average running time for arrays of size 2560: " + average2560);
 
