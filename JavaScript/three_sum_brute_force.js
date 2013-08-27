@@ -109,6 +109,7 @@ var array3 = makeRandomArray(100, 100, -100);
 // arrays10 contains 10 arrays, arrays20 contains 20 arrays and so on. This will be used to measure
 // the run time of the Three-sum algorithm with different array sizes, an average run time is 
 // calculated. 
+var arrays5    = makeManyRandomArrays(100, 5, 100, -100);
 var arrays10   = makeManyRandomArrays(100, 10, 100, -100);
 var arrays20   = makeManyRandomArrays(100, 20, 100, -100);
 var arrays40   = makeManyRandomArrays(100, 40, 100, -100);
@@ -120,15 +121,13 @@ var arrays1280 = makeManyRandomArrays(100, 1280, 100, -100);
 var arrays2560 = makeManyRandomArrays(100, 2560, 100, -100);
 
 // ===================
-// Time Measurements: 
+// Time Measurement: 
 // ===================
 
 // Function that measures average time execution
 function timeMeasure(arrayOfArrays){
     var size         = arrayOfArrays.length; // For use in for loop and average time
-    var arrayOfTimes = [];  // Write times into this array
     var sum          = 0;   // sum of all the times
-    var average      = 0;   // time average
     for(var i = 0; i < size; i++){
         var timeStart = new Date().getTime();
 
@@ -139,38 +138,58 @@ function timeMeasure(arrayOfArrays){
         // End of function to be time measured
 
         var timeEnd   = new Date().getTime();
-        var totalTime = timeEnd - timeStart;
-        arrayOfTimes[i] = totalTime;
+        sum += timeEnd - timeStart; // adds run time to sum
     }
 
-    // Calculate average times:
-    for(var j = 0; j < size; j++){
-        sum += arrayOfTimes[j];
-    }
-    average = sum / size;
-
-    return average;
+    return sum / size;
 }
 
 // Calculate average times, in milliseconds:
 // average10 contains arrays of size 10, average20 contains arrays of size 20, and so on.
-// var average10   = timeMeasure(arrays10);
-// var average20   = timeMeasure(arrays20);
-// var average40   = timeMeasure(arrays40);
-// var average80   = timeMeasure(arrays80);
-// var average160  = timeMeasure(arrays160);
-// var average320  = timeMeasure(arrays320);
+var average10   = timeMeasure(arrays10);
+var average20   = timeMeasure(arrays20);
+var average40   = timeMeasure(arrays40);
+var average80   = timeMeasure(arrays80);
+var average160  = timeMeasure(arrays160);
+var average320  = timeMeasure(arrays320);
 // // Caution, the ones below can take a while.
 // var average640  = timeMeasure(arrays640);
 // var average1280 = timeMeasure(arrays1280);
 // var average2560 = timeMeasure(arrays2560);
 
 // ===================
+// Array Access Count: 
+// ===================
+
+// Counts the number of array accesses, returns the average.
+function arrayAccessCount(arrayOfArrays){
+    var size          = arrayOfArrays.length;
+    var accessCounter = 0;
+    for (var i = 0; i < size; i++){
+        accessCounter += threeSumCount2(arrayOfArrays[i]);
+    }
+    return accessCounter / size;
+}
+
+// Calculate average array accesses: 
+// var averageAccess5    = arrayAccessCount(arrays5);
+// var averageAccess10   = arrayAccessCount(arrays10);
+// var averageAccess20   = arrayAccessCount(arrays20);
+// var averageAccess40   = arrayAccessCount(arrays40);
+// var averageAccess80   = arrayAccessCount(arrays80);
+// var averageAccess160  = arrayAccessCount(arrays160);
+// var averageAccess320  = arrayAccessCount(arrays320);
+// Caution, the ones below can take a while.
+// var averageAccess640  = arrayAccessCount(arrays640);
+// var averageAccess1280 = arrayAccessCount(arrays1280);
+// var averageAccess2560 = arrayAccessCount(arrays2560);
+
+// ===================
 // Other Tests
 // ===================
 
-var ijkValuesS4 = threeSumCount3(array0);
-
+// Ovservations of i, j, k values' dynamics.
+// var ijkValuesS4 = threeSumCount3(array0);
 
 // ===================
 // Logs:
@@ -183,17 +202,28 @@ var ijkValuesS4 = threeSumCount3(array0);
 // console.log(threeSumCount(array3)); // array of random numbers 
 
 // observation of ijk values' dynamics:
-console.log(ijkValuesS4);
+// console.log(ijkValuesS4);
 
 // Time results
-// console.log("Average running time for arrays of size 10: " + average10);
-// console.log("Average running time for arrays of size 20: " + average20);
-// console.log("Average running time for arrays of size 40: " + average40);
-// console.log("Average running time for arrays of size 80: " + average80);
-// console.log("Average running time for arrays of size 160: " + average160);
-// console.log("Average running time for arrays of size 320: " + average320);
-// // Caution, the ones below can take a while.
+console.log("Average running time for arrays of size 10: " + average10);
+console.log("Average running time for arrays of size 20: " + average20);
+console.log("Average running time for arrays of size 40: " + average40);
+console.log("Average running time for arrays of size 80: " + average80);
+console.log("Average running time for arrays of size 160: " + average160);
+console.log("Average running time for arrays of size 320: " + average320);
 // console.log("Average running time for arrays of size 640: " + average640);
-// // console.log("Average running time for arrays of size 1280: " + average1280);
-// // console.log("Average running time for arrays of size 2560: " + average2560);
+// console.log("Average running time for arrays of size 1280: " + average1280);
+// console.log("Average running time for arrays of size 2560: " + average2560);
+
+// Array accesses results
+// console.log("Average array accesses for arrays of size 5: " + averageAccess5);
+// console.log("Average array accesses for arrays of size 10: " + averageAccess10);
+// console.log("Average array accesses for arrays of size 20: " + averageAccess20);
+// console.log("Average array accesses for arrays of size 40: " + averageAccess40);
+// console.log("Average array accesses for arrays of size 80: " + averageAccess80);
+// console.log("Average array accesses for arrays of size 160: " + averageAccess160);
+// console.log("Average array accesses for arrays of size 320: " + averageAccess320);
+// console.log("Average array accesses for arrays of size 640: " + averageAccess640);
+// console.log("Average array accesses for arrays of size 1280: " + averageAccess1280);
+// console.log("Average array accesses for arrays of size 2560: " + averageAccess2560);
 
