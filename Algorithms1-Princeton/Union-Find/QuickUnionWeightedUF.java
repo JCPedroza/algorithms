@@ -9,7 +9,7 @@
 *
 */
 
-public class QuickUnionUFImproved{
+public class QuickUnionWeightedUF{
     
     /**
     * Index represents object, value represents root.
@@ -34,7 +34,7 @@ public class QuickUnionUFImproved{
     * Create an empty union find data structure with N isolated sets.
     * @param N Number isolated sets. 
     */
-    public QuickUnionUFImproved(int N){
+    public QuickUnionWeightedUF(int N){
         count = N;
         id    = new int[N];
         sz    = new int[N];
