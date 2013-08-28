@@ -1,19 +1,12 @@
 /**
-* Improved implementation of QuickUnionUF. This one IS quick enough. The improvements implemented
-* are: Weighting and Path Compression.
+* Improved implementation of QuickUnionUF. 
 *
-* Improvement 1: Weighting. Implemented in the union method. Achieves balance by linking root of 
+*
+* Improvement: Weighting. Implemented in the union method. Achieves balance by linking root of 
 * smaller tree to root of larger tree. This avoids tall trees. Keeps track of size of each 
 * tree (number of objects). this way we have some guarantee that no item will be too far away 
 * from the root
 *
-* Improvement 2: Path Compression. Implemented in the root method. Just after computing 
-* the root of p, set the id of each examined node to point to that root. Added a second loop
-* to root() to set the id[] of each examined node to the root. Only one extra line of code.
-*
-* Analysis:
-* Example: 10^9 unions and finds (roots) with 10^9 objets
-* Weighted Quick-union with path compression reduces time from 30 years to 6 seconds
 */
 
 public class QuickUnionUFImproved{
@@ -58,7 +51,6 @@ public class QuickUnionUFImproved{
     */
     private int root(int i){
         while (i != id[i]){
-            id[i] = id[id[i]]; // Path Compression implementation.
             i     = id[i];
         }
         return i;
