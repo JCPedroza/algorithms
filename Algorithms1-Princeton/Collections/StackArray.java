@@ -7,6 +7,14 @@ import java.util.NoSuchElementException;
 * The StackArray class represents the last-in-first-out (LIFO) stack of 
 * generic items. It supports the usual push and pop operations along with methods 
 * testing if the stack is empty, and iterating through the items in LIFO order.
+*
+* Tradeoffs between linked-list and resizing-array implementations:
+* Linked-list: 
+* 1) Every operation takes constant time in the worst case.
+* 2) Uses extra time and space to deal with the links.
+* Resizing-array:
+* 1) Every operation takes constant amortized time.
+* 2) Less wasted space.
 */
 public class StackArray<Item> implements Iterable<Item>{
 

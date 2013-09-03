@@ -12,6 +12,14 @@ import java.util.NoSuchElementException;
 * through the items in LIFO order.
 *
 * All stack operations except iteration are constant time.
+*
+* Tradeoffs between linked-list and resizing-array implementations:
+* Linked-list: 
+* 1) Every operation takes constant time in the worst case.
+* 2) Uses extra time and space to deal with the links.
+* Resizing-array:
+* 1) Every operation takes constant amortized time.
+* 2) Less wasted space.
 */
 public class StackLinkedList<Item> implements Iterable<Item>{
 
@@ -43,7 +51,7 @@ public class StackLinkedList<Item> implements Iterable<Item>{
     }
     
     /**
-    * Return  the number of items in the stack
+    * Return  the number of items in the stack.
     */
     public int size(){
         return N;   // return N, which is the size of the stack
