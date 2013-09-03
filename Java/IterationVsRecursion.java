@@ -5,6 +5,7 @@ import java.util.*;
 * To compile: javac IterationVsRecursion.java
 * To run: java IterationVsRecursion numberOfTests depthOfTests
 * To run example: java IterationVsRecursion 100 100 will perform 100 tests on each
+* Warning: depth must be less than 1958 or a stack overflow exception will be thrown.
 * algorithm, each algorithm will be called with a parameter of 100.
 */
 public class IterationVsRecursion{
@@ -36,6 +37,25 @@ public class IterationVsRecursion{
     }
 
     // =======================================
+    // Dynamic 2: Simple loops.
+    // =======================================
+    
+    // Simple recursive loop
+    private int recursiveLoop(int depth){
+        if (depth <= 0) return 0;
+        else {
+            depth--;
+            return recursiveLoop(depth);
+        }
+    }
+
+    //Simple iterative loop
+    private int iterativeLoop(int depth){
+        for (int i = 0; i < depth;){i++;}
+        return 0;
+    }
+
+    // =======================================
     // main(), tests, and prints:
     // =======================================
 
@@ -55,13 +75,29 @@ public class IterationVsRecursion{
         long   endTime    = System.nanoTime();
         long duration1R = (endTime - startTime);
         long average1R  = duration1R / times;
-
         // measure iterative implementation.
         startTime = System.nanoTime();
         for (int i = 0; i < times; i++) ivsr.iterativeBuilder(depth);
         endTime    = System.nanoTime();
         long duration1I = (endTime - startTime);
         long average1I  = duration1I / times;
+
+        //============
+        // Dynamic 2.
+        //============
+
+        // measure recursive implementation.
+        startTime = System.nanoTime();
+        for (int i = 0; i < times; i++) ivsr.recursiveLoop(depth);
+        endTime    = System.nanoTime();
+        long duration2R = (endTime - startTime);
+        long average2R  = duration2R / times;
+        // measure iterative implementation.
+        startTime = System.nanoTime();
+        for (int i = 0; i < times; i++) ivsr.iterativeLoop(depth);
+        endTime    = System.nanoTime();
+        long duration2I = (endTime - startTime);
+        long average2I  = duration2I / times;
         
         //============
         // Prints.
@@ -77,6 +113,14 @@ public class IterationVsRecursion{
         // dynamic 1 iterative
         System.out.print("Dynamic 1 iterative: ");
         System.out.println("total: " + duration1I + " average: " + average1I);
+        System.out.println("");
+
+         // dynamic 2 recursive
+        System.out.print("Dynamic 2 recursive: ");
+        System.out.println("total: " + duration2R + " average: " + average2R);
+        // dynamic 2 iterative
+        System.out.print("Dynamic 2 iterative: ");
+        System.out.println("total: " + duration2I + " average: " + average2I);
         System.out.println("");
 
 
