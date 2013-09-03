@@ -26,6 +26,10 @@ import java.util.NoSuchElementException;
 * With this in mind, if you want the security that each operation will take the same time 
 * use linked-list. If you want faster operations, and you can deal with the cost of 
 * sometimes resizing the array, use resizing-array.
+*
+* Linked-list implementation is slower, but it gives us the guarantee of constant 
+* operation time. Resizing-array implementation is faster in general, but at the cost
+* of being slow at the moment of the array resize (which can happen infrequently).
 */
 public class StackLinkedList<Item> implements Iterable<Item>{
 
