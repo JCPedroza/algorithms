@@ -19,18 +19,18 @@ public class StackArray<Item> implements Iterable<Item>{
     */
     @SuppressWarnings("unchecked") // to prevent unchecked cast warning
     public StackArray(){
-        a = (Item[]) new Object[2];
+        a = (Item[]) new Object[2]; // creates a new Item object with capacity 2
     }
     
     /**
     * Is the stack empty?
     */
-    public boolean isEmpty(){return N == 0;} 
+    public boolean isEmpty(){return N == 0;}  // stack is empty if N == 0
  
     /**
     * Return number of items in the stack.
     */
-    public int size(){return N;}
+    public int size(){return N;} // N is the size of the array
 
     /**
     * Resize the underlying array holding the elements
@@ -38,19 +38,20 @@ public class StackArray<Item> implements Iterable<Item>{
     @SuppressWarnings("unchecked") // to prevent unchecked cast warning
     private void resize(int capacity){
         assert capacity >= N;
-        Item[] temp = (Item[]) new Object[capacity];
-        for(int i = 0; i < N; i++){
+        Item[] temp = (Item[]) new Object[capacity]; // new array with x capacity
+        for(int i = 0; i < N; i++){  // copy everything to new rezised array
             temp[i] = a[i];
         }
-        a = temp;
+        a = temp; // a is now resized
     }
     
     /**
     * Push a new item onto the stack.
     */
     public void push(Item item){
-        if (N == a.length) resize(2*a.length);
-        a[N++] = item;
+        // doubles the capacty of array if stack is at maximum capacity:
+        if (N == a.length) resize(2*a.length); 
+        a[N++] = item; // adds 1 to N and assigns -item- to that index
     }
     
     /**
@@ -58,13 +59,13 @@ public class StackArray<Item> implements Iterable<Item>{
     */
     public Item pop(){
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = a[N-1];
-        a[N-1] = null;
-        N--;
-        // shrink size of array if necessary
-        if (N > 0 && N == a.length/4) resize(a.length/2);
-        return item;
-    }
+        Item item = a[N-1]; // last item in the array
+        a[N-1] = null;      // that index is now empty
+        N--;                // size of stack decreased by 1
+        // halves capacity of the array if stack size is at 1/4th of its capacity:
+        if (N > 0 && N == a.length/4) resize(a.length/2); 
+        return item;        // returns the last item in the array                                     
+    }                                                     
     
     
     public Iterator<Item> iterator(){ return new ReverseArrayIterator();}
