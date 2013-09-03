@@ -49,7 +49,8 @@ public class StackArray<Item> implements Iterable<Item>{
     * Push a new item onto the stack.
     */
     public void push(Item item){
-        // doubles the capacty of array if stack is at maximum capacity:
+        // doubles the capacty of array if stack is at maximum capacity, doubling dynamic
+        // is used to avoid frequent resizing of array, which is expensive (~N^2/2):
         if (N == a.length) resize(2*a.length); 
         a[N++] = item; // assigns -item- to that index, the 
     }                  // adds 1 to N
@@ -62,7 +63,9 @@ public class StackArray<Item> implements Iterable<Item>{
         Item item = a[N-1]; // last item in the array
         a[N-1] = null;      // that index is now empty
         N--;                // size of stack decreased by 1
-        // halves capacity of the array if stack size is at 1/4th of its capacity:
+        // halves capacity of the array if stack size is at 1/4th of its capacity, 
+        // doubling dynamic is used to avoid frequent resizing of array, which is
+        // expensive (~N^2/2):
         if (N > 0 && N == a.length/4) resize(a.length/2); 
         return item;        // returns the last item in the array                                     
     }                                                     
