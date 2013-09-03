@@ -17,6 +17,10 @@ import java.util.NoSuchElementException;
 * 2) Less wasted space.
 * 3) It's faster, in general, than linked-list implementation, but you need to be 
 * careful on when the array will be resized, since the operation can be very expensive.
+*
+* With this in mind, if you want the security that each operation will take the same time 
+* use linked-list. If you want faster operations, and you can deal with the cost of 
+* sometimes resizing the array, use resizing-array.
 */
 public class StackArray<Item> implements Iterable<Item>{
 
