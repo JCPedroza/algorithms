@@ -16,10 +16,12 @@ import java.util.NoSuchElementException;
 * Tradeoffs between linked-list and resizing-array implementations:
 * Linked-list: 
 * 1) Every operation takes constant time in the worst case.
-* 2) Uses extra time and space to deal with the links.
+* 2) Uses extra time and space to deal with the links. 
 * Resizing-array:
 * 1) Every operation takes constant amortized time.
 * 2) Less wasted space.
+* 3) It's faster, in general, than linked-list implementation, but you need to be 
+* careful on when the array will be resized, since the operation can be very expensive.
 */
 public class StackLinkedList<Item> implements Iterable<Item>{
 

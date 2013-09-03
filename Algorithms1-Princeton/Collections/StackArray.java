@@ -15,6 +15,8 @@ import java.util.NoSuchElementException;
 * Resizing-array:
 * 1) Every operation takes constant amortized time.
 * 2) Less wasted space.
+* 3) It's faster, in general, than linked-list implementation, but you need to be 
+* careful on when the array will be resized, since the operation can be very expensive.
 */
 public class StackArray<Item> implements Iterable<Item>{
 
