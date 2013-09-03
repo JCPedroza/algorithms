@@ -51,8 +51,8 @@ public class StackArray<Item> implements Iterable<Item>{
     public void push(Item item){
         // doubles the capacty of array if stack is at maximum capacity:
         if (N == a.length) resize(2*a.length); 
-        a[N++] = item; // adds 1 to N and assigns -item- to that index
-    }
+        a[N++] = item; // assigns -item- to that index, the 
+    }                  // adds 1 to N
     
     /**
     * Delete and return the item most recently added.
