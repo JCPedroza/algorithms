@@ -64,8 +64,9 @@ public class StackArray<Item> implements Iterable<Item>{
         a[N-1] = null;      // that index is now empty
         N--;                // size of stack decreased by 1
         // halves capacity of the array if stack size is at 1/4th of its capacity, 
-        // doubling dynamic is used to avoid frequent resizing of array, which is
-        // expensive (~N^2/2):
+        // halving dynamic is used to avoid frequent resizing of array, which is
+        // expensive (~N^2/2), array is not shrinked when it is 1/2 capacity to avoid
+        // thrashing, doing it when it is 1/4 capacity is much more efficient:
         if (N > 0 && N == a.length/4) resize(a.length/2); 
         return item;        // returns the last item in the array                                     
     }                                                     
