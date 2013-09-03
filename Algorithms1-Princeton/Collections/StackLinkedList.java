@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 *
 * All stack operations except iteration are constant time.
 */
-public class Stack<Item> implements Iterable<Item>{
+public class StackLinkedList<Item> implements Iterable<Item>{
 
     private int  N;      // size of the stack
     private Node first;  // top of the stack
@@ -29,7 +29,7 @@ public class Stack<Item> implements Iterable<Item>{
     /**
     * Create an empty stack.
     */
-    public Stack(){
+    public StackLinkedList(){
         first = null;    // empty stack, no null object
         N     = 0;       // empty stack so size is 0
         assert check();
