@@ -35,10 +35,10 @@ public class StackArray<Item> implements Iterable<Item>{
     /**
     * Create an empty stack.
     */
-    @SuppressWarnings("unchecked") // to prevent unchecked cast warning
+    @SuppressWarnings("unchecked")  // to prevent unchecked cast warning
     public StackArray(){
-        a = (Item[]) new Object[2]; // creates a new Item object with capacity 2
-    }
+        a = (Item[]) new Object[2]; // creates a new Item object with capacity 2 -
+    }                               // cast needed since no generic array creation in Java
     
     /**
     * Is the stack empty?
@@ -67,7 +67,7 @@ public class StackArray<Item> implements Iterable<Item>{
     * Push a new item onto the stack.
     */
     public void push(Item item){
-        // doubles the capacty of array if stack is at maximum capacity, doubling dynamic
+        // doubles the capacty of array if stack is at maximum capacity, doubling dynamic -
         // is used to avoid frequent resizing of array, which is expensive (~N^2/2):
         if (N == a.length) resize(2*a.length); 
         a[N++] = item; // assigns -item- to that index, the 

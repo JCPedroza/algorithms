@@ -34,52 +34,80 @@ public class QueueArray<Item> implements Iterable<Item> {
     private int N = 0;           // number of elements on queue
     private int first = 0;       // index of first element of queue
     private int last  = 0;       // index of next available slot
-
-    // cast needed since no generic array creation in Java
+    
+    /**
+    * Create an empty stack.
+    */
+    @SuppressWarnings("unchecked")  // to prevent unchecked cast warning
     public QueueArray() {
-        q = (Item[]) new Object[2];
-    }
+        q = (Item[]) new Object[2]; // creates a new Item object with capacity 2 -
+    }                               // cast needed since no generic array creation in Java
 
-    public boolean isEmpty() { return N == 0;    }
-    public int     size()    { return N;         }
+    /**
+    * Is the stack empty?
+    */
+    public boolean isEmpty() {return N == 0;}
 
-    // resize the underlying array
+    /**
+    * Return number of items in the stack.
+    */
+    public int size() {return N;}
+
+    /**
+    * Resize the underlying array holding the elements.
+    */
+    @SuppressWarnings("unchecked") // to prevent unchecked cast warning
     private void resize(int max) {
         assert max >= N;
-        Item[] temp = (Item[]) new Object[max];
-        for (int i = 0; i < N; i++) {
-            temp[i] = q[(first + i) % q.length];
+        Item[] temp = (Item[]) new Object[max];  // create a new array with of size max
+        for (int i = 0; i < N; i++) {            // copy elements from array q to array -
+            temp[i] = q[(first + i) % q.length]; // temp
         }
-        q = temp;
-        first = 0;
-        last  = N;
+        q = temp;  // q is now the resized array    
+        first = 0; // index of the first element of queue
+        last  = N; // index of the next available slot
     }
 
-
+    /**
+    * Add the item to the queue.
+    */ 
     public void enqueue(Item item) {
-        // double size of array if necessary and recopy to front of array
+        // doubles the capacty of array if stack is at maximum capacity, doubling dynamic -
+        // is used to avoid frequent resizing of array, which is expensive (~N^2/2):
         if (N == q.length) resize(2*q.length);   // double size of array if necessary
-        q[last++] = item;                        // add item
-        if (last == q.length) last = 0;          // wrap-around
-        N++;
+        q[last++] = item;                        // add item, it is now the last item
+        // if the index of the next available item is equal to the length of the array, -
+        // assign 0 as the next available item index
+        if (last == q.length) last = 0;          
+        N++;                                     // queue size increases by 1
     }
-
-    // remove the least recently added item 
+    
+    /**
+    * Remove the least recently added item.
+    * @throws NoSuchElementException if the queue is empty.
+    */
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        Item item = q[first];
+        Item item = q[first];                       // the first item in the queue
         q[first] = null;                            // to avoid loitering
-        N--;
-        first++;
-        if (first == q.length) first = 0;           // wrap-around
-        // shrink size of array if necessary
+        N--;                                        // queue size decreases by 1
+        first++;                                    // index of the first item increases by 1
+        // if the index of the next available item is equal to the length of the array, -
+        // assign 0 as the next available item index
+        if (first == q.length) first = 0;          
+        // halves capacity of the array if stack size is at 1/4th of its capacity, 
+        // halving dynamic is used to avoid frequent resizing of array, which is
+        // expensive (~N^2/2), array is not shrinked when it is 1/2 capacity to avoid
+        // thrashing, doing it when it is 1/4 capacity is much more efficient:
         if (N > 0 && N == q.length/4) resize(q.length/2); 
         return item;
     }
 
     public Iterator<Item> iterator() { return new ArrayIterator(); }
 
-    // an iterator, doesn't implement remove() since it's optional
+    /**
+    * An iterator, doesn't implement remove() since it's optional
+    */
     private class ArrayIterator implements Iterator<Item> {
         private int i = 0;
         public boolean hasNext()  { return i < N;                               }
