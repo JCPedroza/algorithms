@@ -76,6 +76,7 @@ public class QueueArray<Item> implements Iterable<Item> {
         // is used to avoid frequent resizing of array, which is expensive (~N^2/2):
         if (N == q.length) resize(2*q.length);   // double size of array if necessary
         q[last++] = item;                        // add item, it is now the last item
+        // tricky part: once you get past the capacity you need to reset back to 0, -
         // if the index of the next available item is equal to the length of the array, -
         // assign 0 as the next available item index:
         if (last == q.length) last = 0;          
@@ -92,6 +93,7 @@ public class QueueArray<Item> implements Iterable<Item> {
         q[first] = null;                            // to avoid loitering
         N--;                                        // queue size decreases by 1
         first++;                                    // index of the first item increases by 1
+        // tricky part: once you get past the capacity you need to reset back to 0, -
         // if the index of the first item is equal to the length of the array, -
         // assign 0 as the first item index:
         if (first == q.length) first = 0;          
