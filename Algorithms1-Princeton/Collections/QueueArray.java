@@ -92,8 +92,8 @@ public class QueueArray<Item> implements Iterable<Item> {
         q[first] = null;                            // to avoid loitering
         N--;                                        // queue size decreases by 1
         first++;                                    // index of the first item increases by 1
-        // if the index of the next available item is equal to the length of the array, -
-        // assign 0 as the next available item index:
+        // if the index of the first item is equal to the length of the array, -
+        // assign 0 as the first item index:
         if (first == q.length) first = 0;          
         // halves capacity of the array if stack size is at 1/4th of its capacity, 
         // halving dynamic is used to avoid frequent resizing of array, which is
