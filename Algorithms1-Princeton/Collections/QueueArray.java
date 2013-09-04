@@ -117,6 +117,9 @@ public class QueueArray<Item> implements Iterable<Item> {
     * An iterator, doesn't implement remove() since it's optional
     */
     private class ArrayIterator implements Iterator<Item> {
+        // support iteration over collection items by client, without -
+        // revealing the internal representaion. we make data structures iterable -
+        // to support elegant, compac, java client code: the for each loop
         private int i = 0;
         public boolean hasNext()  { return i < N;                               }
         public void remove()      { throw new UnsupportedOperationException();  }

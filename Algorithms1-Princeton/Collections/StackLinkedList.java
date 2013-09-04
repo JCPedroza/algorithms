@@ -145,6 +145,8 @@ public class StackLinkedList<Item> implements Iterable<Item>{
     * An iterator, doesn't implement remove() since it's optional
     */
     private class ListIterator implements Iterator<Item> {
+        // support iteration over collection items by client, without -
+        // revealing the internal representaion.
         private Node current = first;
         public boolean hasNext()  { return current != null;                     }
         public void remove()      { throw new UnsupportedOperationException();  }

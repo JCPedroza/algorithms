@@ -33,7 +33,7 @@ import java.util.NoSuchElementException;
 */
 public class QueueLinkedList<Item> implements Iterable<Item>{
     
-    private int  N;     // number of elements on queue
+    private int  N;     // number of elements in the queue
     private Node first; // beginning of queue
     private Node last;  // end of queue
     
@@ -41,7 +41,7 @@ public class QueueLinkedList<Item> implements Iterable<Item>{
     * Helper linked list class.
     */
     private class Node{
-        private Item item; // the item
+        private Item item; // the item in the collection
         private Node next; // links to next item, first links -
     }                      // to second, and so on
     
@@ -163,6 +163,9 @@ public class QueueLinkedList<Item> implements Iterable<Item>{
 
     // an iterator, doesn't implement remove() since it's optional
     private class ListIterator implements Iterator<Item> {
+        // support iteration over collection items by client, without -
+        // revealing the internal representaion, we make data structures iterable -
+        // to support elegant, compac, java client code: the for each loop
         private Node current = first;
 
         public boolean hasNext()  { return current != null;                     }

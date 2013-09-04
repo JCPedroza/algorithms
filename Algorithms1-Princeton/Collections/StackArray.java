@@ -102,6 +102,8 @@ public class StackArray<Item> implements Iterable<Item>{
     * An iterator, doesn't implement remove() since it's optional
     */
     private class ReverseArrayIterator implements Iterator<Item>{
+        // support iteration over collection items by client, without -
+        // revealing the internal representaion.
         private int i;
         public ReverseArrayIterator(){
             i = N;
