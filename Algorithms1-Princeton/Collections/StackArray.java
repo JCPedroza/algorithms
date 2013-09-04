@@ -103,7 +103,8 @@ public class StackArray<Item> implements Iterable<Item>{
     */
     private class ReverseArrayIterator implements Iterator<Item>{
         // support iteration over collection items by client, without -
-        // revealing the internal representaion.
+        // revealing the internal representaion, we make data structures iterable -
+        // to support elegant, compac, java client code: the for each loop
         private int i;
         public ReverseArrayIterator(){
             i = N;
