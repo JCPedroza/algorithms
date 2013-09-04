@@ -83,8 +83,8 @@ public class QueueArray<Item> implements Iterable<Item> {
         if (N == q.length) resize(2*q.length);   // double size of array if necessary
         q[last++] = item;                        // add item, it is now the last item
         // tricky part: once you get past the capacity you need to reset back to 0, -
-        // if the index of the next available item is equal to the length of the array, -
-        // assign 0 as the next available item index:
+        // something similar to modulo operator; a circular dynamic, this way the space -
+        // left by the dequeues can be used (see end of class for details):
         if (last == q.length) last = 0;          
         N++;                                     // queue size increases by 1
     }
@@ -100,8 +100,8 @@ public class QueueArray<Item> implements Iterable<Item> {
         N--;                                        // queue size decreases by 1
         first++;                                    // index of the first item increases by 1
         // tricky part: once you get past the capacity you need to reset back to 0, -
-        // if the index of the first item is equal to the length of the array, -
-        // assign 0 as the first item index:
+        // something similar to modulo operator; a circular dynamic, this way the space -
+        // left by the dequeues can be used (see end of class for details):
         if (first == q.length) first = 0;          
         // halves capacity of the array if stack size is at 1/4th of its capacity, 
         // halving dynamic is used to avoid frequent resizing of array, which is
@@ -118,7 +118,7 @@ public class QueueArray<Item> implements Iterable<Item> {
     */
     private class ArrayIterator implements Iterator<Item> {
         // support iteration over collection items by client, without -
-        // revealing the internal representaion. we make data structures iterable -
+        // revealing the internal representaion, we make data structures iterable -
         // to support elegant, compac, java client code: the for each loop
         private int i = 0;
         public boolean hasNext()  { return i < N;                               }
@@ -132,3 +132,34 @@ public class QueueArray<Item> implements Iterable<Item> {
         }
     }
 }
+
+/**
+* Explanation of if (last == q.length) last = 0; and if (first == q.length) first = 0; in
+* enqueue() and dequeue() by Punnet Singh of the Coursera course forums: 
+*
+* Actually, it explains the concept of circular queue. For example when you enqueue, item gets added its 
+* appended to end, for example an integer array of size 5 after enqueue of 4 items (9,5,6,10), will be like 
+* this
+* index: 0  1  2  3  4
+* no.    9  5  6 10
+* last = 4
+*
+* Now if you dequeue twice, 9 and 5 will be dequeued
+* index: 0  1  2  3  4
+* no:          6 10
+* last = 4  
+*
+* Now as you can see there is space left at end, plus at beginning of the array due to dequeue operation.
+* Now when you enqueue 11
+* index: 0  1  2  3  4
+* no:          6 10 11
+* last = 5 (array length)
+* last is made 0
+*
+* So in order to waste the space left at beginning of the array, last is then assigned to index = 0,
+* this is called circular queue, where last is moved back to beginning of the array in circular fashion.
+* So next enqueue will happen at index 0.
+*
+* Note that last points to next free space index, and its updated using last++, that means the no. will 
+* be assigned first to the last index, after that last will be updated
+*/
