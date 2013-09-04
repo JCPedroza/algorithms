@@ -40,7 +40,7 @@ public class StackLinkedList<Item> implements Iterable<Item>{
     * Helper linked list class.
     */
     private class Node{
-        private Item item;    // the item
+        private Item item;    // the item in the collection
         private Node next;    // points to the next item
     }
     
@@ -71,11 +71,11 @@ public class StackLinkedList<Item> implements Iterable<Item>{
     * Add the item to the stack.
     */
     public void push(Item item){
-        Node oldfirst = first; // remembers oldfirst so the new first can link to it
+        Node oldfirst = first;      // remembers oldfirst so the new first can link to it
         first         = new Node(); // creates a new first Node object
-        first.item    = item; // puts the item in the variable/reference
-        first.next    = oldfirst; // links to the next item
-        N++;  // adds 1 to N, which is the size of the stack
+        first.item    = item;       // assigns the item to the first.item reference
+        first.next    = oldfirst;   // links to the next item
+        N++;                        // adds 1 to N, which is the size of the stack
         assert check();
     }
     
@@ -146,7 +146,8 @@ public class StackLinkedList<Item> implements Iterable<Item>{
     */
     private class ListIterator implements Iterator<Item> {
         // support iteration over collection items by client, without -
-        // revealing the internal representaion.
+        // revealing the internal representaion, we make data structures iterable -
+        // to support elegant, compac, java client code: the for each loop
         private Node current = first;
         public boolean hasNext()  { return current != null;                     }
         public void remove()      { throw new UnsupportedOperationException();  }

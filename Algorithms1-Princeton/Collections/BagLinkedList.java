@@ -4,7 +4,8 @@ import java.util.NoSuchElementException;
 /**
 * A generic bag or multiset, implemented using a linked list.
 * Its implementation is like a stack without pop, or queue
-* without dequeue. Its main application is adding items to a 
+* without dequeue. This specific class is implemented like
+* a stack without pop. Its main application is adding items to a 
 * collection and iterating (when order doesn't matter).
 *
 * The Bag class represents a bag (or multiset) of 
@@ -48,8 +49,8 @@ public class BagLinkedList<Item> implements Iterable<Item> {
     * Create an empty stack.
     */
     public BagLinkedList() {
-        first = null;
-        N = 0;
+        first = null;   // the bag is empty, so first reference points to null
+        N = 0;          // size of bag is 0
         assert check();
     }
 
@@ -71,49 +72,53 @@ public class BagLinkedList<Item> implements Iterable<Item> {
      * Add the item to the bag.
      */
     public void add(Item item) {
-        Node oldfirst = first;
-        first = new Node();
-        first.item = item;
-        first.next = oldfirst;
-        N++;
+        Node oldfirst = first;  // remembers oldfirst so the new first can link to it
+        first = new Node();     // creates a new first Node object
+        first.item = item;      // assigns the item to the first.item reference
+        first.next = oldfirst;  // links to the next item
+        N++;                    // adds 1 to N, which is the size of the stack
         assert check();
     }
 
-    // check internal invariants
+    /**
+    * Check internal invariants.
+    */
     private boolean check() {
         if (N == 0) {
-            if (first != null) return false;
-        }
+            if (first != null) return false; // first must be null if the size of 
+        }                                    // the size of the stack is 0
         else if (N == 1) {
-            if (first == null)      return false;
-            if (first.next != null) return false;
+            if (first == null)      return false; // first must be a Node object if N < 0
+            if (first.next != null) return false; // first must always link to null
         }
         else {
-            if (first.next == null) return false;
-        }
+            if (first.next == null) return false; // if N < 1, first must always link to 
+        }                                         // the second Node object.
 
         // check internal consistency of instance variable N
         int numberOfNodes = 0;
         for (Node x = first; x != null; x = x.next) {
             numberOfNodes++;
         }
-        if (numberOfNodes != N) return false;
-
+        if (numberOfNodes != N) return false; // number of nodes must be equal to the size
+                                              // stack
         return true;
-    } 
+    }  
 
 
     /**
-    * Return an iterator that iterates over the items in the bag.
+    * Return an iterator to the stack that iterates through the items in LIFO order.
     */
-    public Iterator<Item> iterator()  {
-        return new ListIterator();  
-    }
-
-    // an iterator, doesn't implement remove() since it's optional
+    public Iterator<Item> iterator()  { return new ListIterator();  }
+    
+    /**
+    * An iterator, doesn't implement remove() since it's optional
+    */
     private class ListIterator implements Iterator<Item> {
+        // support iteration over collection items by client, without -
+        // revealing the internal representaion, we make data structures iterable -
+        // to support elegant, compac, java client code: the for each loop
         private Node current = first;
-
         public boolean hasNext()  { return current != null;                     }
         public void remove()      { throw new UnsupportedOperationException();  }
 
@@ -124,3 +129,4 @@ public class BagLinkedList<Item> implements Iterable<Item> {
             return item;
         }
     }
+}
