@@ -77,7 +77,7 @@ public class QueueArray<Item> implements Iterable<Item> {
         if (N == q.length) resize(2*q.length);   // double size of array if necessary
         q[last++] = item;                        // add item, it is now the last item
         // if the index of the next available item is equal to the length of the array, -
-        // assign 0 as the next available item index
+        // assign 0 as the next available item index:
         if (last == q.length) last = 0;          
         N++;                                     // queue size increases by 1
     }
@@ -93,7 +93,7 @@ public class QueueArray<Item> implements Iterable<Item> {
         N--;                                        // queue size decreases by 1
         first++;                                    // index of the first item increases by 1
         // if the index of the next available item is equal to the length of the array, -
-        // assign 0 as the next available item index
+        // assign 0 as the next available item index:
         if (first == q.length) first = 0;          
         // halves capacity of the array if stack size is at 1/4th of its capacity, 
         // halving dynamic is used to avoid frequent resizing of array, which is
