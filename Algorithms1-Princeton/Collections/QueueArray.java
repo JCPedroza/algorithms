@@ -40,8 +40,11 @@ public class QueueArray<Item> implements Iterable<Item> {
     */
     @SuppressWarnings("unchecked")  // to prevent unchecked cast warning
     public QueueArray() {
-        q = (Item[]) new Object[2]; // creates a new Item object with capacity 2 -
-    }                               // cast needed since no generic array creation in Java
+        // note that this dynamic is used becaue Java doesn't allow generic array creation, -
+        // so we create an array of type Object and cast it to the generic type Item, achieving
+        // something similar to q = new Item[2] if it was possible in Java
+        q = (Item[]) new Object[2]; // creates a new Item array with capacity 2 -
+    }                               
 
     /**
     * Is the stack empty?
@@ -59,6 +62,9 @@ public class QueueArray<Item> implements Iterable<Item> {
     @SuppressWarnings("unchecked") // to prevent unchecked cast warning
     private void resize(int max) {
         assert max >= N;
+        // note that this dynamic is used becaue Java doesn't allow generic array creation, -
+        // so we create an array of type Object and cast it to the generic type Item, achieving
+        // something similar to Item[] temp = new Item[max] if it was possible in Java
         Item[] temp = (Item[]) new Object[max];  // create a new array with of size max
         for (int i = 0; i < N; i++) {            // copy elements from array q to array -
             temp[i] = q[(first + i) % q.length]; // temp

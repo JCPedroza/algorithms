@@ -37,8 +37,11 @@ public class StackArray<Item> implements Iterable<Item>{
     */
     @SuppressWarnings("unchecked")  // to prevent unchecked cast warning
     public StackArray(){
+        // note that this dynamic is used becaue Java doesn't allow generic array creation, -
+        // so we create an array of type Object and cast it to the generic type Item, achieving
+        // something similar to q = new Item[2] if it was possible in Java
         a = (Item[]) new Object[2]; // creates a new Item object with capacity 2 -
-    }                               // cast needed since no generic array creation in Java
+    }                               
     
     /**
     * Is the stack empty?
@@ -56,6 +59,9 @@ public class StackArray<Item> implements Iterable<Item>{
     @SuppressWarnings("unchecked") // to prevent unchecked cast warning
     private void resize(int capacity){
         assert capacity >= N;
+        // note that this dynamic is used becaue Java doesn't allow generic array creation, -
+        // so we create an array of type Object and cast it to the generic type Item, achieving
+        // something similar to Item[] temp = new Item[capacity] if it was possible in Java
         Item[] temp = (Item[]) new Object[capacity]; // new array with x capacity
         for(int i = 0; i < N; i++){  // copy everything to new rezised array
             temp[i] = a[i];
