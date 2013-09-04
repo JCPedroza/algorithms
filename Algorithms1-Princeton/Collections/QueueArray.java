@@ -69,7 +69,7 @@ public class QueueArray<Item> implements Iterable<Item> {
     }
 
     /**
-    * Add the item to the queue.
+    * * Add the item to the end of the queue.
     */ 
     public void enqueue(Item item) {
         // doubles the capacty of array if stack is at maximum capacity, doubling dynamic -

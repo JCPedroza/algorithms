@@ -79,7 +79,7 @@ public class QueueLinkedList<Item> implements Iterable<Item>{
     }
     
     /**
-    * Add the item to the queue.
+    * Add the item to the end of the queue.
     */
     public void enqueue(Item item){
         Node oldlast = last;   // remembers the former last node
