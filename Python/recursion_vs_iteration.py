@@ -44,12 +44,14 @@ def recursion(depth):
 number_of_tests = int(sys.argv[1])
 test_depth = int(sys.argv[2])
 
+# iteration running time:
 iteration_start = time.time()
 for e in range(number_of_tests):
     iteration(test_depth)
 iteration_total = time.time() - iteration_start
 iteration_average = iteration_total / number_of_tests
 
+# recursion runnign time:
 recursion_start = time.time()
 for e in range(number_of_tests):
     recursion(test_depth)
