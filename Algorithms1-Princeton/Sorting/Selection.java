@@ -1,6 +1,6 @@
 /**
 * Sorts a sequence of items using selection sort.
-* 
+*
 * Selection sort is a sorting algorithm, specifically an in-place comparison sort. It 
 * has O(n2) time complexity, making it inefficient on large lists, and generally performs
 * worse than the similar insertion sort. Selection sort is noted for its simplicity, 
@@ -19,6 +19,12 @@
 * ~ N^2/2 compares and N exchanges.
 * Worst, best and average case performance: O(n^2).
 * Running time is insensitive to imput. It is quadratic time, even if input is sorted.
+*
+* Performance compared with insertion sort:
+* In best case it is worse than insertion sort; quadratic instead of linear. Worst case, in 
+* the other hand, is better than insertion sort. Insertion sort is: ~ 1/2 N^2 compares and 
+* ~ 1/2 N^2 exchanges. They both do around the same compares, but Insertion sort does many
+* more exchanges.
 *
 * Demo:
 * You can see an animation of this sorting algorithm at www.sorting-algorithms.com/selection-sort
