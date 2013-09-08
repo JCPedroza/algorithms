@@ -48,17 +48,17 @@ public class Shell{
     * @param a The array to be sorted.
     */
     public static void sort(Comparable[] a){
-        int N = a.length;
-        int h = 1;
+        int N = a.length;               // length of the array
+        int h = 1;                      // Will be highest sequence value in next line:
         while(h < N / 3) h = 3*h + 1;   // 3x+1 increment sequence: 1, 4, 13, 40, 121...
         while(h >= 1){                  // sort the array
             for(int i = h; i < N; i++){
-                // insertion sort, but the decremens are in h
+                // insertion sort, but the decrements are in h
                 for(int j = i; j >= h && less(a[j], a[j - h]); j-= h)
                     exch(a, j, j - h);
             } 
-            h = h / 3;
-        }                              // move to next increment
+            h = h / 3;                  // move to next increment
+        }                              
     }
 
     /**
