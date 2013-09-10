@@ -63,7 +63,7 @@ public class StackArray<Item> implements Iterable<Item>{
         // so we create an array of type Object and cast it to the generic type Item, achieving
         // something similar to Item[] temp = new Item[capacity] if it was possible in Java
         Item[] temp = (Item[]) new Object[capacity]; // new array with x capacity
-        for(int i = 0; i < N; i++){  // copy everything to new rezised array
+        for(int i = 0; i < N; i++){  // copy everything to new resized array
             temp[i] = a[i];
         }
         a = temp; // a is now resized
