@@ -90,7 +90,7 @@ public class QueueLinkedList<Item> implements Iterable<Item>{
         if (isEmpty()) first = last;  
         // if it was not empty, assign it as the last node:
         else           oldlast.next = last;
-        N++;                   // queue size increses by 1
+        N++;                   // queue size increases by 1
         assert check();
     }
 
@@ -165,7 +165,7 @@ public class QueueLinkedList<Item> implements Iterable<Item>{
     private class ListIterator implements Iterator<Item> {
         // support iteration over collection items by client, without -
         // revealing the internal representaion, we make data structures iterable -
-        // to support elegant, compac, java client code: the for each loop
+        // to support elegant, compact, java client code: the for each loop
         private Node current = first;
 
         public boolean hasNext()  { return current != null;                     }
