@@ -13,6 +13,10 @@
 */
 public class KnuthShuffle{
     
+    // =================================================
+    //                   The Algorithm
+    // =================================================
+
     /**
     * Knuth shuffle algorithm.
     * @param a The array to be shuffled. 
@@ -24,6 +28,10 @@ public class KnuthShuffle{
             exch(a, i, r);           // swap i with that random index between 0 and i
         }
     }
+    
+    // =================================================
+    //                 Helper Methods
+    // =================================================
 
     /**
     * Produces a random integer between 0 and range (inclusive).
@@ -33,7 +41,7 @@ public class KnuthShuffle{
     private static int random(int range){
         return (int)(Math.random() * (range + 1));
     }
-
+    
     /**
     * Swaps two items in an array.
     * @param i Index of item to be swaped.

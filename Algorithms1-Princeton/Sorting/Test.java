@@ -8,6 +8,7 @@ public class Test{
         Integer[] intArray1 = new Integer[] {5, 2, 1, 4, 3, 10, 9, 8, 20, 18, -5, -100, 23, -15};
         Integer[] intArray2 = new Integer[] {5, 2, 1, 4, 3, 10, 9, 8, 20, 18, -5, -100, 23, -15};
         Integer[] intArray3 = new Integer[] {5, 2, 1, 4, 3, 10, 9, 8, 20, 18, -5, -100, 23, -15};
+        Integer[] intArray4 = new Integer[] {5, 2, 1, 4, 3, 10, 9, 8, 20, 18, -5, -100, 23, -15};
 
         Selection.sort(intArray1);
         System.out.println(Arrays.toString(intArray1));
@@ -19,6 +20,8 @@ public class Test{
             KnuthShuffle.shuffle(intArray0);
             System.out.println(Arrays.toString(intArray0));
         }
+        Merge.sort(intArray4);
+        System.out.println(Arrays.toString(intArray4));
 
     }
 }

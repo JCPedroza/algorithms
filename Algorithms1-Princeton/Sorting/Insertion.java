@@ -36,6 +36,10 @@
 */
 public class Insertion{
     
+    // =================================================
+    //                   The Algorithm
+    // =================================================
+
     /**
     * Insertion sort algorithm.
     * @param a The array to be sorted.
@@ -48,7 +52,11 @@ public class Insertion{
                     exch(a, j, j - 1);     // swap the items in the array
                 else break;                // break the loop if the value to the left -
     }                                      // is <= a[j]        
-
+    
+    // =================================================
+    //                 Helper Methods
+    // =================================================
+    
     /**
     * Is v less than w?
     * @param v Item to be compared to.

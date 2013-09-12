@@ -43,6 +43,10 @@
 */
 public class Shell{
     
+    // =================================================
+    //                   The Algorithm
+    // =================================================
+
     /**
     * Shell sort algorithm.
     * @param a The array to be sorted.
@@ -60,7 +64,11 @@ public class Shell{
             h = h / 3;                  // move to next increment
         }                              
     }
-
+    
+    // =================================================
+    //                 Helper Methods
+    // =================================================
+    
     /**
     * Is v less than w?
     * @param v Item to be compared to.

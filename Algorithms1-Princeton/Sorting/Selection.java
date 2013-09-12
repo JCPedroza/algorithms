@@ -31,6 +31,10 @@
 */
 public class Selection{
     
+    // =================================================
+    //                   The Algorithm
+    // =================================================
+
     /**
     * Selection sort algorithm.
     * @param a The array to be sorted.
@@ -45,6 +49,10 @@ public class Selection{
             exch(a, i, min);                 // swaps the minimum value with the first -
         }                                    // item in the unsorted portion of the array
     }
+    
+    // =================================================
+    //                 Helper Methods
+    // =================================================
     
     /**
     * Is v less than w?
