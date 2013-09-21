@@ -47,7 +47,7 @@ public class Insertion{
     public static void sort(Comparable[] a){
         int N = a.length;                  // length of the array
         for (int i = 0; i < N; i++)        // loop through the array
-            for (int j = i; j > 0; j--)    // loop through the sorted portion of array
+            for (int j = i; j > 0; j--)    // loop from index i to 1
                 if (less(a[j], a[j - 1]))  // if the value to the left is >= a[j]:
                     exch(a, j, j - 1);     // swap the items in the array
                 else break;                // break the loop if the value to the left -
