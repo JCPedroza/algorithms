@@ -25,10 +25,8 @@
 * 2) Stop if already sorted. Check: is biggest item in first half <= smallest item in second
 * half? Helps for partially-ordered arrays (implemented here). 
 * 3) Eliminate the copy to the auxiliary array. Save time (but not space) by switching
-* the role of the input and auxiliary array in each recursive call. (implemented in MergeC
-* class).
+* the role of the input and auxiliary array in each recursive call (not implemented here).
 *  
-*
 * Demo:
 * You can see an animation of this algorithm in action at www.sorting-algorithms.com/merge-sort
 */
@@ -38,7 +36,7 @@ public class Merge{
     * Used as cutoff point at which point the insertion sort algorithm will be used instead
     * of the merge sort algorithm. Arrays of CUTOFF size will be sorted by insertion sort.
     */
-    private static final int CUTOFF = 7;
+    private static int CUTOFF = 7;
 
     // =================================================
     //                   The Algorithm
@@ -82,12 +80,17 @@ public class Merge{
     */
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi){
         // mergesort has too much overhead for tiny subarrays; cutoff to insertion sort for 
-        // around 7 items (CUTOFF constant)
-        if (hi <= lo + CUTOFF - 1) Insertion.sort(a, lo, hi); // improvement 1
-        int mid = lo + (hi - lo) / 2;  // computes the midpoint of the array
-        sort (a, aux, lo, mid);        // sort the first half
-        sort (a, aux, mid+1, hi);      // sort the second half
-        merge(a, aux, lo, mid, hi);    // merge them together
+        // around 7 items (CUTOFF constant):
+        // !!! this doesnt work, there is no Insertion.sort for a[] int int!
+        if (hi <= lo + CUTOFF - 1) {
+            Insertion.sort(a, lo, hi); // improvement 1
+            return;
+        }
+        int mid = lo + (hi - lo) / 2;        // computes the midpoint of the array
+        sort (a, aux, lo, mid);              // sort the first half
+        sort (a, aux, mid+1, hi);            // sort the second half
+        if (!less(a[mid+1], a[mid])) return; // improvement 2 (read improvements for details)
+        merge(a, aux, lo, mid, hi);          // merge them together
     }
     
     /**
