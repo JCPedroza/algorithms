@@ -1,4 +1,3 @@
-
 object Main extends App {
   def merge[T](f: (T, T) => Boolean, xs: List[T], ys: List[T]): List[T] = (xs, ys) match {
     case (Nil, ys) => ys
