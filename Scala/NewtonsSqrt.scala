@@ -22,10 +22,10 @@ object NewtonsSqrt{
     * @param guess The initial or current estimate.
     * @param x     Computing the square root of this number.
     */
-    def sqrtIter(guess: Double, x: Double): Double =
-      if (isGoodEnough(guess, x)) guess     // return the value if the estimate is good enough
-      else sqrtIter(improve(guess, x), x)   // improve the estimate
-    
+    def sqrtIter(guess: Double): Double =
+      if (isGoodEnough(guess)) guess     // return the value if the estimate is good enough
+      else sqrtIter(improve(guess))   // improve the estimate
+
     /** Computes the absolute value of a number. */
     def abs(x:Double) = if (x < 0) -x else x
 
@@ -33,19 +33,17 @@ object NewtonsSqrt{
     * Is the estimate close enough? The difference of x and the square of the guess must be 
     * smaller to some epsilon value, 0.001 on this case. 
     */
-    def isGoodEnough(guess: Double, x: Double) =
+    def isGoodEnough(guess: Double) =
       abs(guess * guess - x) / x < 0.001
 
     /** 
     * Improve the current estimate: mean of guess and x / guess.
     */
-    def improve(guess: Double, x: Double) =
+    def improve(guess: Double) =
       (guess + x / guess) / 2
 
-    sqrtIter(1.0, x)
+    sqrtIter(1.0)
 
   }
-
-
-
+  
 }
