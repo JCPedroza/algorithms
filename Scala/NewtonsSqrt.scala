@@ -18,7 +18,7 @@ object NewtonsSqrt{
     
     /**
     * Iterative function that computes the square root of a number.
-    * Will improve the estimate until it is close enough.
+    * Will improve the estimate until it is close enough to x.
     * @param guess The initial or current estimate.
     * @param x     Computing the square root of this number.
     */
