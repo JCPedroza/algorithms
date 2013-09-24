@@ -24,7 +24,7 @@ object NewtonsSqrt{
     */
     def sqrtIter(guess: Double): Double =
       if (isGoodEnough(guess)) guess     // return the value if the estimate is good enough
-      else sqrtIter(improve(guess))   // improve the estimate
+      else sqrtIter(improve(guess))      // improve the estimate
 
     /** Computes the absolute value of a number. */
     def abs(x:Double) = if (x < 0) -x else x
