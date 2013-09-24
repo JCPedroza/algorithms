@@ -30,7 +30,7 @@
 * c   c - 1     c
 *
 */
-object PascalsTriangle extends App{
+object PascalsTriangle{
   
   /** 
   * Computes the elements of Pascal’s triangle, recursively, using Pascal's rule.
