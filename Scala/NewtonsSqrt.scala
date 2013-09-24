@@ -31,7 +31,7 @@ object NewtonsSqrt{
 
     /** 
     * Is the estimate close enough? The difference of x and the square of the guess must be 
-    * smaller to some epsilon value, 0.001 on this case. 
+    * smaller to some epsilon value to be good enough; 0.001 on this case. 
     */
     def isGoodEnough(guess: Double) =
       abs(guess * guess - x) / x < 0.001
