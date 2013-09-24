@@ -37,7 +37,7 @@ object NewtonsSqrt{
       abs(guess * guess - x) / x < 0.001
 
     /** 
-    * Improve the current estimate: mean of guess and x / guess.
+    * Improve the current estimate. Mean of: guess and x / guess.
     */
     def improve(guess: Double) =
       (guess + x / guess) / 2
