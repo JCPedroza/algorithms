@@ -52,5 +52,5 @@ object PascalsTriangle{
       println()
     }
   }
-  
+
 }
