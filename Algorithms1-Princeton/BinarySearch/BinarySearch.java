@@ -3,10 +3,18 @@
 * It's a simple algorithm, but it's very tricky to implement. First binary search was published in 1946;
 * first bug-free one in 1962. Bug in Java's Arrays.binarySearch() discovered in 2006.
 *
-* How it works: Compare key against middle entry. If too small, go left. If too big, go right. 
-* If equal, found.
+* How it works: 
+* the algorithm compares the search key value with the key value of the middle element of the array. 
+* If the keys match, then a matching element has been found and its index, or position, is returned. 
+* Otherwise, if the search key is less than the middle element's key, then the algorithm repeats its 
+* action on the sub-array to the left of the middle element or, if the search key is greater, on the 
+* sub-array to the right. If the remaining array to be searched is empty, then the key cannot be 
+* found in the array and a special "not found" indication is returned.
 *
-* Performance: worst case: logbase2(N) or (lg(N)) --lg means logbase2--
+* Performance: 
+* Worst case:   O(log n)
+* Best case:    O(1)
+* Average case: O(log n)
 */
 public class BinarySearch{
     
