@@ -23,17 +23,17 @@ public class BinarySearch{
     */
     public int binarySearch(int[] a, int key){
         
-        // Determine highest and lowest index:
+        // determine highest and lowest index:
         int lo = 0;
         int hi = a.length - 1;
 
         while (lo <= hi){
             
-            int mid = lo + (hi - lo) / 2;        // Calculate mid index.
+            int mid = lo + (hi - lo) / 2;        // calculate mid index
             // 3-way compare:
-            if      (key < a[mid]) hi = mid - 1; // Set a new hi point if key < mid value.
-            else if (key > a[mid]) lo = mid + 1; // Set a new lo point if key > mid value.
-            else return mid;                     // key = mid value, so return the index.
+            if      (key < a[mid]) hi = mid - 1; // set a new hi point if key < mid value
+            else if (key > a[mid]) lo = mid + 1; // set a new lo point if key > mid value
+            else return mid;                     // key = mid, return that index
         }
 
         return -1; // Returns -1 if the key was not found
