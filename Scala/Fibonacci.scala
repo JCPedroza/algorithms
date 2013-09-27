@@ -1,3 +1,6 @@
+import scala.math.sqrt
+import scala.math.pow
+
 /**
 * Different algorithms to calculate the nth fibonacci number. 
 */
