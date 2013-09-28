@@ -17,7 +17,7 @@ object Fibonacci extends App{
   def fiboRecursive(n: Int): Int = {
     if      (n == 0) 0
     else if (n == 1) 1
-    else    fibo(n-1) + fibo(n-2)
+    else    fiboRecursive(n-1) + fiboRecursive(n-2)
   }
   
   /**
