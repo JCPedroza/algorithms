@@ -3,7 +3,7 @@ import math.abs
 /**
 * Calculates the fixed point of a function. 
 *
-* A numbe x is called a fixed point of a function f if f(x) = f
+* A number x is called a fixed point of a function f if f(x) = f
 *
 * For some functions f we can locate the fixed points by starting with an initial
 * estimate and then by applying f in a repetitive way:
