@@ -8,6 +8,8 @@ class Rational(x: Int, y: Int){
   def numer = x
   def denom = y
   
+  // this will act like an overloaded operator, thanks to the infix isage:
+  // rational.<(rational) is the same as rational < rational
   def < (that: Rational) = this.numer * that.denom < that.numer * this.denom
   
   def max(that :Rational) = if (this < that) that else this
