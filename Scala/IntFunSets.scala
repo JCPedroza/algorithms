@@ -14,12 +14,19 @@
 *
 * Therefore, we choose to represent a set by its characterisitc function and define a type alias 
 * for this representation:
-* type Set = Int => Boolean
+* type Set = Int => Boolean 
 * Using this representation, we define a function that tests for the presence of a value in a set:
 * def contains(s: Set, elem: Int): Boolean = s(elem)
 *
 * In order to limit the search space, we set the range of forall and exists to a bound value; the 
 * scan will be made from -bound to bound (from -1000 to 1000 if bound = 1000).
+*
+* Examples:
+* val s1 = singletonSet(50) // singleton set containing only the number 50
+* val s2 = union(singletonSet(1), singletonSet(2)) // is the set {1, 2}
+* val even: Set = x => x % 2 == 0 // the set of all even Ints
+* Basically any function from Int to Boolean that returns true for more than one value is a set 
+* with multiple values.
 */
 object IntFunSets {
   /**
