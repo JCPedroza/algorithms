@@ -46,6 +46,35 @@ nosetests.xml
 .project
 .pydevproject
 
+# ============= Ruby ============= #
+
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+
+# ============= R ============= #
+
+# History files
+.Rhistory
+
+# Example code in package build process
+*-Ex.R
+
 # ============= Scala ============= #
 
 *.class
