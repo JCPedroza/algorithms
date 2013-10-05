@@ -43,7 +43,9 @@ repeats = 5000
 print ""
 print "==========================================================================="
 print ""
-print "Running time of different factorial algorithm implementations, in seconds."
+print "Running time of different factorial algorithm implementations,"
+print "in wall clock seconds, not CPU time."
+print ""
 print "Compute 150 factorial {0} times:".format(repeats)
 
 timer1 = timeit.Timer("factorialRecursive(150)", "from __main__ import factorialRecursive")
