@@ -41,8 +41,10 @@ def factorialIterF(n):
 repeats = 5000
 
 print ""
+print "==========================================================================="
+print ""
 print "Running time of different factorial algorithm implementations, in seconds."
-print "Compute 150 factorial " + str(repeats) + " times:"
+print "Compute 150 factorial {0} times:".format(repeats)
 
 timer1 = timeit.Timer("factorialRecursive(150)", "from __main__ import factorialRecursive")
 print ""
@@ -64,6 +66,8 @@ print ""
 print "factorialIterF()"
 print timer4.timeit(repeats)
 
+print ""
+print "==========================================================================="
 print ""
 
 
