@@ -41,19 +41,30 @@ factorialIterF <- function(n){
 #      Timing the Algorithms
 # ===============================
 
-print("")
-print("factorialRecursive()")
-print(system.time(replicate(2000, factorialRecursive(150))))
+repeats <- 5000
 
-print("")
-print("factorialTailRecursive()")
-print(system.time(replicate(2000, factorialTailRecursive(150))))
+cat("\n")
+cat("===========================================================================\n")
+cat("\n")
+cat("Running time of different factorial algorithm implementations, CPU time, in seconds.\n")
+cat(sprintf("Compute 150 factorial %i times:\n", repeats))
 
-print("")
-print("factorialIterW()")
-print(system.time(replicate(2000, factorialIterW(150))))
+cat("\n"); 
+cat("factorialRecursive()\n")
+print(system.time(replicate(repeats, factorialRecursive(150))))
 
-print("")
-print("factorialIterF()")
-print(system.time(replicate(2000, factorialIterF(150))))
+cat("\n")
+cat("factorialTailRecursive()\n")
+print(system.time(replicate(repeats, factorialTailRecursive(150))))
 
+cat("\n")
+cat("factorialIterW()\n")
+print(system.time(replicate(repeats, factorialIterW(150))))
+
+cat("\n")
+cat("factorialIterF()\n")
+print(system.time(replicate(repeats, factorialIterF(150))))
+
+cat("\n")
+cat("===========================================================================\n")
+cat("\n")
