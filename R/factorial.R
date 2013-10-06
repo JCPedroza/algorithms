@@ -46,7 +46,7 @@ repeats <- 5000
 cat("\n")
 cat("===========================================================================\n")
 cat("\n")
-cat("Running time of different factorial algorithm implementations, CPU time, in seconds.\n")
+cat("Running time of different factorial algorithm implementations, in seconds.\n")
 cat(sprintf("Compute 150 factorial %i times:\n", repeats))
 
 cat("\n"); 
