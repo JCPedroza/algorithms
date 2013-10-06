@@ -57,8 +57,8 @@ function performance(f, name){
 console.log("");
 console.log("===================================================================");
 console.log("");
-console.log("Running time of different factorial algorithm implementations,");
-console.log("in wall clock seconds, not CPU time.");
+console.log("Running time of different factorial algorithm implementations, in");
+console.log("seconds.");
 console.log("");
 console.log("Compute " + num + " factorial " + repeats + " times:");
 
