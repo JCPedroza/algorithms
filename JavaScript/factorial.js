@@ -46,7 +46,7 @@ function factorialIterF(n){
 var num     = 150;
 var repeats = 5000;
 
-/** Measures running time of a function */
+/** Measures running time of a function, using console.time() */
 function performance(f, name){
     console.time(name);
     for (var i = 0; i < repeats; i++)
@@ -54,22 +54,52 @@ function performance(f, name){
     console.timeEnd(name);
 }
 
+/** Measures runnint time of a function, using Date().getTime() */
+function performanceGetTime(f){
+    var start = new Date().getTime();
+    for (var i = 0; i < repeats; i++)
+        f(num);
+    var end   = new Date().getTime();
+    return end - start + "ms";
+}
+
+/** Measures runnint time of a function, using Date().getMilliseconds() */
+function performanceGetMilliseconds(f){
+    var start = new Date().getMilliseconds();
+    for (var i = 0; i < repeats; i++)
+        f(num);
+    var end   = new Date().getMilliseconds();
+    return end - start + "ms";
+}
+
 console.log("");
 console.log("===================================================================");
 console.log("");
-console.log("Running time of different factorial algorithm implementations, in");
-console.log("seconds.");
+console.log("Running time of different factorial algorithm implementations.");
+console.log("Uses console.time(), Date().getTime() and Date().getMilliseconds()");
 console.log("");
 console.log("Compute " + num + " factorial " + repeats + " times:");
 
 console.log("");
 performance(factorialRecursive, "factorialRecursive()");
+console.log("Using Date().getTime(): " + performanceGetTime(factorialRecursive));
+console.log("Using Date().getMilliseconds(): " + performanceGetMilliseconds(factorialRecursive));
+
 console.log("");
 performance(factorialTailRecursive, "factorialTailRecursive()");
+console.log("Using Date().getTime(): " + performanceGetTime(factorialTailRecursive));
+console.log("Using Date().getMilliseconds(): " + performanceGetMilliseconds(factorialTailRecursive));
+
 console.log("");
 performance(factorialIterW, "factorialIterW()");
+console.log("Using Date().getTime(): " + performanceGetTime(factorialIterW));
+console.log("Using Date().getMilliseconds(): " + performanceGetMilliseconds(factorialIterW));
+
 console.log("");
 performance(factorialIterF, "factorialIterF()");
+console.log("Using Date().getTime(): " + performanceGetTime(factorialIterF));
+console.log("Using Date().getMilliseconds(): " + performanceGetMilliseconds(factorialIterF));
+
 console.log("");
 
 console.log("===================================================================");
