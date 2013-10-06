@@ -43,23 +43,24 @@ function factorialIterF(n){
 //    Timing the Algorithms
 // ===============================
 
-var num     = 200;
+var num     = 150;
 var repeats = 5000;
 
 /** Measures running time of a function */
 function performance(f, name){
     console.time(name);
-    for (var i = 0; i < repeats; i++) f(num);
+    for (var i = 0; i < repeats; i++)
+        f(num);
     console.timeEnd(name);
 }
 
 console.log("");
-console.log("========================================");
+console.log("===================================================================");
 console.log("");
 console.log("Running time of different factorial algorithm implementations,");
 console.log("in wall clock seconds, not CPU time.");
 console.log("");
-console.log("Compute 150 factorial " + repeats + " times:");
+console.log("Compute " + num + " factorial " + repeats + " times:");
 
 console.log("");
 performance(factorialRecursive, "factorialRecursive()");
@@ -71,6 +72,6 @@ console.log("");
 performance(factorialIterF, "factorialIterF()");
 console.log("");
 
-console.log("========================================");
+console.log("===================================================================");
 console.log("");
 
