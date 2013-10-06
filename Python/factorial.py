@@ -54,9 +54,8 @@ def performance(f, num):
 print ""
 print "==========================================================================="
 print ""
-print "Running time of different factorial algorithm implementations in wall"
-print "clock seconds (not CPU time). Uses timeit module and a custom"
-print "performance function."
+print "Running time of different factorial algorithm implementations."
+print "Uses timeit module and a custom performance function."
 print ""
 print "Compute {0} factorial {1} times:".format(num, repeats)
 
