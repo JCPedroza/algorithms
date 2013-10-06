@@ -1,4 +1,6 @@
 import timeit
+import time
+
 """
 Different implementations of a simple factorial algorithm.
 To run this code: python factorial.py
@@ -12,7 +14,7 @@ def factorial_recursive(n):
     if n < 1: return 1
     else:     return n * factorial_recursive(n - 1)
 
-def factorial_tail_resursive(n):
+def factorial_tail_recursive(n):
     """ Computes factorial of n using tail recursion. """
     def recursion(n, acc):
         if n < 1: return acc
@@ -39,24 +41,36 @@ def factorial_iter_f(n):
 # ===============================
 
 repeats = 5000
+num     = 150
+
+def performance(f, num):
+    """
+    Measures running time of a function using time.clock().
+    """
+    start = time.clock()
+    for i in range(0, repeats): f(num)
+    return time.clock() - start
 
 def time_timeit():
+    """
+    Measures running time of the algorithms using the timeit module.
+    """
     print ""
     print "==========================================================================="
     print ""
-    print "Running time of different factorial algorithm implementations,"
-    print "in wall clock seconds, not CPU time."
+    print "Running time of different factorial algorithm implementations in wall"
+    print "clock seconds (not CPU time). Uses timeit module."
     print ""
-    print "Compute 150 factorial {0} times:".format(repeats)
+    print "Compute {0} factorial {1} times:".format(num, repeats)
 
     timer1 = timeit.Timer("factorial_recursive(150)", "from __main__ import factorial_recursive")
     print ""
     print "factorial_recursive()"
     print timer1.timeit(repeats)
 
-    timer2 = timeit.Timer("factorial_tail_resursive(150)", "from __main__ import factorial_tail_resursive")
+    timer2 = timeit.Timer("factorial_tail_recursive(150)", "from __main__ import factorial_tail_recursive")
     print ""
-    print "factorial_tail_resursive()"
+    print "factorial_tail_recursive()"
     print timer2.timeit(repeats)
 
     timer3 = timeit.Timer("factorial_iter_w(150)", "from __main__ import factorial_iter_w")
@@ -73,6 +87,39 @@ def time_timeit():
     print "==========================================================================="
     print ""
 
+def time_performance():
+    """
+    Measures running time of the algorithms using the performance function.
+    """
+    print ""
+    print "==========================================================================="
+    print ""
+    print "Running time of different factorial algorithm implementations in wall "
+    print "clock seconds (not CPU time). Uses custom performance function."
+    print ""
+    print "Compute {0} factorial {1} times:".format(num, repeats)
+
+    print ""
+    print "factorial_recursive()"
+    print performance(factorial_recursive, num)
+
+    print ""
+    print "factorial_tail_recursive()"
+    print performance(factorial_tail_recursive, num)
+
+    print ""
+    print "factorial_iter_w()"
+    print performance(factorial_iter_w, num)
+
+    print ""
+    print "factorial_iter_f()"
+    print performance(factorial_iter_f, num)
+
+    print ""
+    print "==========================================================================="
+    print ""
+
 time_timeit()
+time_performance()
 
 
