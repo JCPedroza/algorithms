@@ -4,6 +4,7 @@ import resource
 
 """
 Different implementations of a simple factorial algorithm.
+Performance measurements use int type.
 To run this code: python factorial.py
 """
 # ===============================
