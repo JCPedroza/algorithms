@@ -8,7 +8,7 @@
 # Computes factorial of n using recursion.
 factorialRecursive <- function(n){
   if (n == 1) 1
-  else n * (factorial(n - 1))
+  else n * (factorialRecursive(n - 1))
 }
 
 # Computes factorial of n using tail recursion.
@@ -41,7 +41,7 @@ factorialIterF <- function(n){
 #      Timing the Algorithms
 # ===============================
 
-repeats <- 5000
+repeats <- 20000
 
 cat("\n")
 cat("===========================================================================\n")
