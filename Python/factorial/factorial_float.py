@@ -42,7 +42,7 @@ def factorial_iter_f(n):
 #    Timing the Algorithms
 # ===============================
 
-repeats = 5000
+repeats = 20000
 num     = 150.0
 
 def performance(f, num):
@@ -50,7 +50,7 @@ def performance(f, num):
     Measures running time of a function using time.clock().
     """
     start = time.clock()
-    for i in range(0, repeats): f(num)
+    for i in range(repeats): f(num)
     return time.clock() - start
 
 def resource_performance(f, num):
@@ -59,7 +59,7 @@ def resource_performance(f, num):
     Index 0 is user time, index 1 is system time.
     """
     start = resource.getrusage(resource.RUSAGE_SELF)
-    for i in range(0, repeats): f(num)
+    for i in range(repeats): f(num)
     end   = resource.getrusage(resource.RUSAGE_SELF)
     return (end.ru_utime - start.ru_utime, 
             end.ru_stime - start.ru_stime)
