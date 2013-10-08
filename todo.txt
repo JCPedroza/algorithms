@@ -2,3 +2,5 @@ timing for (var i = 1; i < n + 1; i++) vs
 
 a = n + 1
 for (var i = 1; i < a; i++)
+
+R: use microbenchmark package for timing functions 
