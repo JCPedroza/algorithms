@@ -8,3 +8,5 @@ R: use microbenchmark package for timing functions
 Scala: to IntSetBinaryT add methods from tweet assignment, like filter. Check first for better implementations of the 
 methods though.
 
+Scala and all: implement the Boolean and Nat classes you saw in Scala and 
+other OO languages.
