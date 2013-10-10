@@ -9,4 +9,4 @@ Scala: to IntSetBinaryT add methods from tweet assignment, like filter. Check fi
 methods though.
 
 Scala and all: implement the Boolean and Nat classes you saw in Scala and 
-other OO languages.
+other OO languages. It's in week 4 lectures 1 and 2 (you have notes for them)
