@@ -1,5 +1,5 @@
 
-public class Factorial {
+public class FactorialLong{
     
 	/** Computes n factorial using recursion. */
 	public long factorialRecursive(long n){
