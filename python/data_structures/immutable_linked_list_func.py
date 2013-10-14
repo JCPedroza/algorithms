@@ -81,13 +81,30 @@ def reverse(xs):
     else:
         return concat(reverse(tail(xs)), cons(head(xs), Nil))
 
-def remove_index(xs, index):
-    """ Returns a copy of the input list without the node in the specified index """
-    pass
+# !!! Can this be improved?
+def sub_from(xs, from_index):
+    """ Creates a sublist of the input list that includes the items from_index onwards  """
+    if is_empty(xs):
+        return xs
+    elif from_index < 1:
+        return cons(head(xs), sub_from(tail(xs), from_index))
+    else:
+        return sub_from(tail(xs), from_index - 1)
 
-def remove_value(xs, value):
-    """ Returns a copy of the input list without the value specified """
-    pass
+# !!! Can this be improved?
+def sub_to(xs, to_index):
+    """ Creates a sublist of the input list that includes the items up to to_index """
+    if to_index < 0:
+        return Nil
+    else:
+        return cons(head(xs), sub_to(tail(xs), to_index - 1))
+
+def sub_from_to(xs, from_index, to_index):
+   pass
+
+def remove_index(xs, index):
+    """ Returns a copy of the input list which doesn't contain the node in the specified index """
+    return concat(sub_to(xs, index - 1), sub_from(xs, index + 1))
 
 # Examples:
 
@@ -102,3 +119,9 @@ print length(a)
 print last(ab)
 print init(ab)
 print reverse(ab)
+print sub_from(a, 1)
+print remove_index(a, 1)
+print sub_to(ab, 4)
+print remove_index(ab, 8)
+
+
