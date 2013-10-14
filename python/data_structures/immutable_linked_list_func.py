@@ -81,30 +81,51 @@ def reverse(xs):
     else:
         return concat(reverse(tail(xs)), cons(head(xs), Nil))
 
-# !!! Can this be improved?
-def sub_from(xs, from_index):
-    """ Creates a sublist of the input list that includes the items from_index onwards  """
-    if is_empty(xs):
-        return xs
-    elif from_index < 1:
-        return cons(head(xs), sub_from(tail(xs), from_index))
-    else:
-        return sub_from(tail(xs), from_index - 1)
-
-# !!! Can this be improved?
-def sub_to(xs, to_index):
-    """ Creates a sublist of the input list that includes the items up to to_index """
-    if to_index < 0:
+def take(n, xs):
+    """ Returns the first n elements of the list. """
+    if n < 1:
         return Nil
     else:
-        return cons(head(xs), sub_to(tail(xs), to_index - 1))
+        return cons(head(xs), take(n - 1, tail(xs)))
 
-def sub_from_to(xs, from_index, to_index):
-   pass
+def drop(n, xs):
+    """ Returns a copy of input list, without the first n elements."""
+    if n == 0:
+        return xs
+    else:
+        return drop( n - 1, tail(xs))
 
-def remove_index(xs, index):
+def piece(from_index, to_index, xs):
+   return take(to_index - from_index, drop(from_index, xs))
+
+def remove_one(index, xs):
     """ Returns a copy of the input list which doesn't contain the node in the specified index """
-    return concat(sub_to(xs, index - 1), sub_from(xs, index + 1))
+    return concat(take(index - 1, xs), drop(index, xs))
+
+def to_string(xs, prefix="[", sep=", ", postfix="]"):
+    """ lst to string """
+    def _to_string(xs):
+        if is_empty(xs):
+            return ""
+        elif is_empty(tail(xs)):
+            return str(head(xs))
+        else:
+            return str(head(xs)) + sep + _to_string(tail(xs))
+    return prefix + _to_string(xs) + postfix
+
+def insert(x, xs):
+    """ Helper for functional insertion sort. """
+    if is_empty(xs) or x <= head(xs):
+        return cons(x, xs)
+    else:
+        return cons(head(xs), insert(x, tail(xs)))
+
+def isort(xs):
+    """ Functional insertion sort """
+    if is_empty(xs):
+        return xs
+    else:
+        return insert(head(xs), isort(tail(xs)))
 
 # Examples:
 
@@ -119,9 +140,16 @@ print length(a)
 print last(ab)
 print init(ab)
 print reverse(ab)
-print sub_from(a, 1)
-print remove_index(a, 1)
-print sub_to(ab, 4)
-print remove_index(ab, 8)
 
+print remove_one(1, a)
+print take(4, ab)
+print remove_one(4, ab)
+print ""
+print drop(3, ab)
+print ""
+print piece(0, 5, ab)
+print piece(1, 5, ab)
+print piece(2, 5, ab)
+print piece(1, 6, ab)
+print piece(1, 7, ab)
 
