@@ -1,4 +1,4 @@
-object EuclidsGCD{
+object GCD{
 
   /** Computes the greatest common divisor of two numbers using Euclid's algorithm */
   def gcd(a: Int, b: Int): Int = 
