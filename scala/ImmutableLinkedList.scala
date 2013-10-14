@@ -1,8 +1,10 @@
 /**
 * A fundamental data structure in many functional languages is the immutable
 * linked list. It is constructed from two building blocks:
+* 
 * Nil: the empty list. 
 * Cons: a cell containing an element and the remainder of the list.
+* 
 * A list is either an empty list new Nil or a list new Cons(x, xs) 
 * consisting of a head element x and a tail list xs. 
 */
@@ -16,7 +18,7 @@ object ImmutableLinkedList{
   }
 }
 
-/** Subclass for Cons and Nil, abstracti implementation */
+/** Superclass for Cons and Nil, abstract implementation */
 trait List[T] {
   def isEmpty: Boolean // is the list empty?
   def head: T          // item 
@@ -32,12 +34,12 @@ trait List[T] {
 */
 class Cons[T](val head: T, val tail: List[T]) extends List[T]{
   def isEmpty = false  // a Cons cell is never empty
-  
-  }
+
+}
 
 /** Class for empty cell */
 class Nil[T] extends List[T]{
   def isEmpty = true  // a Nil cell is always empty
   def head = throw new NoSuchElementException("Nil.head") // Nil cells do not have item
   def tail = throw new NoSuchElementException("Nil.tail") // Nil cells do not have tail
-  }
+}
