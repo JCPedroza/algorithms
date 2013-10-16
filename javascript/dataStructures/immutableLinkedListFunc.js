@@ -15,12 +15,8 @@ function tail(xs){
 
 function lst(){
     var arg_array = Array.prototype.slice.call(arguments);  // arguments cast from object to array
-    if (arg_array.length === 0) {
-	return Nil;
-    }
-    else {
-	return cons(arg_array[0], lst.apply(this, arg_array.slice(1)));
-    }
+    if (arg_array.length === 0) return Nil;
+    else return cons(arg_array[0], lst.apply(this, arg_array.slice(1)));
 }
 
 var a = cons(Nil);
