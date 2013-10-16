@@ -1,4 +1,4 @@
-var Nil = null
+var Nil = "Nil"
 
 function cons(head, tail){
     tail = typeof tail !== "undefined" ? tail : Nil;
@@ -16,21 +16,32 @@ function tail(xs){
 function lst(){
     var arg_array = Array.prototype.slice.call(arguments);  // arguments cast from object to array
     if (arg_array.length === 0) {
-	console.log(arg_array.length); 
-	return Nil;}
+	return Nil;
+    }
     else {
-	console.log(arg_array.length); 
-	console.log(arg_array); 
-	return cons(arg_array[0], lst.apply(this, arg_array.slice(1)));}
-
+	return cons(arg_array[0], lst.apply(this, arg_array.slice(1)));
+    }
 }
 
-var a = cons(1, cons(2, cons(3, Nil)));
-var b = cons(1, cons(2, cons(3, Nil)));
-
+var a = cons(Nil);
+var b = cons(1, Nil);
+var c = cons(1, cons(2));
+var d = cons(1, cons(2, cons(3)));
+var e = cons(1, cons(2, cons(3, cons(4))));
+var f = cons(1, cons(2, cons(3, cons(4, cons(5)))));
+var g = cons(1, cons(2, cons(3, cons(4, cons(5, cons(6))))));
 console.log(a);
 console.log(b);
-console.log("");
-console.log(lst(1, 2, 3));
+console.log(c);
+console.log(d);
+console.log(e);
+console.log(f);
+console.log(g);
+console.log(JSON.stringify(g))
+
+
+
+
+
 
 
