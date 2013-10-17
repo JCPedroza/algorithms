@@ -32,13 +32,13 @@ function lst() {
 
 /** Returns the first element of a list */
 function head(xs) {
-    if (xs === Nil) throw "Nil doesn't contain head";
+    if (xs === Nil) return [];
     else return xs[0];
 }
 
 /** Returns a list containing all elements except the first. */
 function tail(xs) {
-    if (xs === Nil) throw "Nil doesn't contain tail";
+    if (xs === Nil) return [];
     else return xs[1];
 }
 
@@ -110,8 +110,9 @@ console.log("a:             ", JSON.stringify(a));
 console.log("b:             ", JSON.stringify(b));
 console.log("empty:         ", JSON.stringify(empty));
 console.log("head of a:     ", JSON.stringify(head(a)));
-console.log("tail of b:     ", JSON.stringify(tail(b)));
+console.log("tail of a:     ", JSON.stringify(tail(a)));
 console.log("tail of empty: ", JSON.stringify(tail(empty)));
+console.log("concat a & b:  ", JSON.stringify(concat(a, b)));
 
 
 
