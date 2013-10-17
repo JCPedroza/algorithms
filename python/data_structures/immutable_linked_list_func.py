@@ -128,6 +128,13 @@ def isort(xs):
     else:
         return insert(head(xs), isort(tail(xs)))
 
+def at(index, xs):
+    """ Returns the value at index n. Zero-based indexing. """
+    if index < 1:
+        return head(xs)
+    else:
+        return at(index - 1, tail(xs))
+
 # Examples:
 
 y = cons(Nil)
@@ -160,4 +167,5 @@ print piece(1, 5, ab)
 print piece(2, 5, ab)
 print piece(1, 6, ab)
 print piece(1, 7, ab)
+print at(2, a)
 
