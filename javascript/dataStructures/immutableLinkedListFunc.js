@@ -1,4 +1,17 @@
-var Nil = "Nil"; 
+/**
+*
+* Constructing Linked Lists
+*
+* Our linked list data structure consists of two fundamental building blocks: Nil and cons. Nil represents the 
+* empty list and serves as a sentinel for more complex lists. The cons operation extends a list at the front by 
+* inserting a new value.
+*
+* The lists we construct using this method consist internally of nested arrays of 2 items. For example, the list [1, 2, 3] 
+* is represented by the expression cons(1, cons(2, cons(3, Nil))) which evaluates to the nested arrays [1, [2, [3, Nil]]].
+*
+*/
+
+var Nil = "Nil";
 
 /** Extends a list at the front by inserting a new value. */
 function cons(head, tail) {
@@ -9,7 +22,7 @@ function cons(head, tail) {
 /**
 * Define list instances using a more convenient syntax and without deeply nested cons calls.
 * lst() === Nil                                                                                                                                                                
-* lst(1, 2, 3) === (1, (2, (3, Nil)))
+* lst(1, 2, 3) === [1, [2, [3, Nil]]]
 */
 function lst() {
     var arg_array = Array.prototype.slice.call(arguments);  // arguments cast from object to array
@@ -87,8 +100,8 @@ function removeOne(index, xs){
 
 
 
-var a = lst()
-var zz = lst(1, 2, 3, 4, 5, 6, 7)
+var a = lst();
+var zz = lst(1, 2, 3, 4, 5, 6, 7);
 var b = cons(7, cons(8, cons(9)));
 var g = cons(1, cons(2, cons(3, cons(4, cons(5, cons(6))))));
 console.log(JSON.stringify(g));
