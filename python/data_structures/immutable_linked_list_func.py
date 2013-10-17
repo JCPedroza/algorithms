@@ -40,7 +40,7 @@ def tail(xs):
     return xs[1]
 
 def is_empty(xs):
-    """ Returns True if the list contains zero elements """
+    """ Returns True if the list contains zero elements. """
     return xs is Nil
 
 def length(xs):
@@ -90,13 +90,14 @@ def take(n, xs):
 
 def drop(n, xs):
     """ Returns a copy of input list, without the first n elements."""
-    if n == 0:
+    if n < 1:
         return xs
     else:
         return drop( n - 1, tail(xs))
 
 def piece(from_index, to_index, xs):
-   return take(to_index - from_index, drop(from_index, xs))
+    """ Returns a subset of the input list that includes the items in the range from_index, to_index """ 
+    return take(to_index - from_index, drop(from_index, xs))
 
 def remove_one(index, xs):
     """ Returns a copy of the input list which doesn't contain the node in the specified index """
@@ -129,9 +130,16 @@ def isort(xs):
 
 # Examples:
 
+y = cons(Nil)
+z = lst()
+w = lst(Nil)
 a = lst(1, 2, 3, 4)
 b = lst(5, 6, 7, 8)
 ab = concat(a, b)
+print y
+print z
+print w
+print ""
 print a
 print head(a)
 print tail(a)
