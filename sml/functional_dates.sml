@@ -21,14 +21,9 @@ fun is_older(date1 : int*int*int, date2 : int*int*int) =
 fun number_in_month(dates : (int*int*int) list, month: int) = 
     if   null dates
     then 0
-    else
-        let 
-            val nim = number_in_month(tl dates, month)
-        in
-            if   #2 (hd dates) = month
-            then 1 + nim
-            else nim
-        end
+    else if #2 (hd dates) = month
+    then 1 + number_in_month(tl dates, month)
+    else number_in_month(tl dates, month)
 
 (* returns number of dates that are in any of the months *)
 fun number_in_months(dates : (int*int*int) list, months : int list) =
@@ -40,14 +35,9 @@ fun number_in_months(dates : (int*int*int) list, months : int list) =
 fun dates_in_month(dates : (int*int*int) list, month : int) = 
     if null dates
     then []
-    else
-        let
-            val dim = dates_in_month(tl dates, month)
-        in
-            if   #2 (hd dates) = month
-            then hd dates :: dim
-            else dim
-        end
+    else if #2 (hd dates) = month
+    then (hd dates)::dates_in_month(tl dates, month)
+    else dates_in_month(tl dates, month)
 
 (* returns a list of dates that are in any of the given months *)
 fun dates_in_months(dates : (int*int*int) list, months : int list) = 
@@ -72,9 +62,9 @@ fun date_to_string(date : int*int*int) =
 
 (* number of elements before reaching sum*)
 fun number_before_reaching_sum(sum : int, intlist : int list) =
-    if   sum - hd intlist <= 0 
+    if   sum <= hd intlist 
     then 0
-    else 1 + (number_before_reaching_sum(sum - hd intlist, tl intlist))
+    else 1 + number_before_reaching_sum(sum - hd intlist, tl intlist)
 
 (* returns the number of month that corresponds to a number of day in a year *)
 fun what_month(day : int) = 
@@ -88,20 +78,23 @@ fun what_month(day : int) =
 fun month_range(day1 : int, day2 : int) = 
     if   day1 > day2
     then []
-    else what_month(day1) :: month_range(day1 + 1, day2) 
+    else what_month day1 :: month_range(day1 + 1, day2) 
 
 (* returns the oldest date in a list *)
-fun oldest(dates : (int*int*int) list) =
-    let 
-        fun aux(d1: int*int*int, d2: (int*int*int) option) =
-        if isSome d2 andalso not (is_older(d1, valOf d2))
-        then d2
-        else SOME d1
-    in 
-        if null dates
-        then NONE
-        else aux(hd dates, oldest(tl dates))
-    end 
+fun oldest (dates : (int * int * int) list) =
+    if null dates
+    then NONE
+    else 
+        let fun f dates =
+                if null (tl dates)
+                then hd dates
+                else 
+                    let val ans = f (tl dates)
+                    in if is_older(ans, hd dates)
+                       then ans
+                       else hd dates
+                    end
+        in SOME(f dates) end  
 
 
 (* ========= Challenges ========= *)
