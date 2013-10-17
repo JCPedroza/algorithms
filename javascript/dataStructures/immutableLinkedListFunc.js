@@ -11,11 +11,11 @@
 *
 */
 
-var Nil = "Nil";
+var Nil = [];
 
 /** Extends a list at the front by inserting a new value. */
 function cons(head, tail) {
-    tail = typeof tail === "undefined" ? Nil : tail;
+    tail = typeof tail === "undefined" ? Nil : tail;  // default argument is Nil
     return [head, tail];
 }
 
