@@ -102,6 +102,12 @@ function removeOne(index, xs) {
     return concat(take(index - 1, xs), drop(index, xs));
 }
 
+/** Returns the value at n index. Zero-based indexing. */
+function at(index, xs){
+    if (index < 1) return head(xs);
+    else return(at(index - 1, tail(xs)));
+}
+
 // Some examples:
 
 var a = lst(1, 2, 3, 4, 5);
@@ -112,14 +118,15 @@ var empty = lst();
 console.log("a:               ", JSON.stringify(a));
 console.log("b:               ", JSON.stringify(b));
 console.log("empty:           ", JSON.stringify(empty));
-console.log("head of a:       ", JSON.stringify(head(a)));
-console.log("tail of a:       ", JSON.stringify(tail(a)));
-console.log("tail of empty:   ", JSON.stringify(tail(empty)));
-console.log("concat a & b:    ", JSON.stringify(concat(a, b)));
+console.log("head(a):         ", JSON.stringify(head(a)));
+console.log("tail(a):         ", JSON.stringify(tail(a)));
+console.log("tail(empty):     ", JSON.stringify(tail(empty)));
+console.log("concat(a, b):    ", JSON.stringify(concat(a, b)));
 console.log("take(3, a):      ", JSON.stringify(take(3, a)));
 console.log("drop(3, a):      ", JSON.stringify(drop(3, a)));
 console.log("piece(0, 4):     ", JSON.stringify(piece(0, 4, a)));
 console.log("removeOne(3, a): ", JSON.stringify(removeOne(3, a)));
+console.log("at(2, a):        ", JSON.stringify(at(2, a)));
 
 // !!! still needs to_string and isort functions
 
