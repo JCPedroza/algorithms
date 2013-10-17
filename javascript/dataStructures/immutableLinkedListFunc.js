@@ -71,31 +71,33 @@ function init(xs) {
     else return cons(head(xs), init(tail(xs)));
 }
 
-
 /** Returns the input list, reversed. */
 function reverse(xs) {
     if (isEmpty(xs)) return xs;
     else return concat(reverse(tail(xs)), cons(head(xs), Nil));
 }
 
-/** Returns the first n elements of the given list. */
+/** Returns the first n elements of the given list. Inclusive, one-based indexing. */
 function take(n, xs){
     if (n < 1) return Nil;
     else return cons(head(xs), take(n - 1, tail(xs)));
 }
 
-/** Returns a copy of input list, without the first n elements. */
+/** Returns a copy of input list, without the first n elements. Inclusive, one-based indexing. */
 function drop(n, xs) {
     if (n < 1) return xs;
     else return drop(n - 1, tail(xs));
 }
 
-/**  Returns a subset of the input list that includes the items in the range from, to. */
+/** 
+* Returns a subset of the input list that includes the items in the range from, to. 
+* Zero-based indexing, from is inclusive, to is exclusive.  
+*/
 function piece(from, to, xs) {
-    return take(to - from, drop(from, xs));
+    return take((to - from), drop(from, xs));
 }
 
-/** Removes the element of the list at given index */
+/** Removes the element of the list at given index. One-based indexing. */
 function removeOne(index, xs) {
     return concat(take(index - 1, xs), drop(index, xs));
 }
@@ -104,15 +106,23 @@ function removeOne(index, xs) {
 
 var a = lst(1, 2, 3, 4, 5);
 var b = cons(6, cons(7, cons(8, cons(9, cons(10)))));
+var c = lst(12, 3, 16, 22, 89, 4, 1);
 var empty = lst();
 
-console.log("a:             ", JSON.stringify(a));
-console.log("b:             ", JSON.stringify(b));
-console.log("empty:         ", JSON.stringify(empty));
-console.log("head of a:     ", JSON.stringify(head(a)));
-console.log("tail of a:     ", JSON.stringify(tail(a)));
-console.log("tail of empty: ", JSON.stringify(tail(empty)));
-console.log("concat a & b:  ", JSON.stringify(concat(a, b)));
+console.log("a:               ", JSON.stringify(a));
+console.log("b:               ", JSON.stringify(b));
+console.log("empty:           ", JSON.stringify(empty));
+console.log("head of a:       ", JSON.stringify(head(a)));
+console.log("tail of a:       ", JSON.stringify(tail(a)));
+console.log("tail of empty:   ", JSON.stringify(tail(empty)));
+console.log("concat a & b:    ", JSON.stringify(concat(a, b)));
+console.log("take(3, a):      ", JSON.stringify(take(3, a)));
+console.log("drop(3, a):      ", JSON.stringify(drop(3, a)));
+console.log("piece(0, 4):     ", JSON.stringify(piece(0, 4, a)));
+console.log("removeOne(3, a): ", JSON.stringify(removeOne(3, a)));
+
+// !!! still needs to_string and isort functions
+
 
 
 
