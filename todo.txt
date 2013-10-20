@@ -13,3 +13,5 @@ other OO languages. It's in week 4 lectures 1 and 2 (you have notes for them)
 
 javascrimp dataStructures immutable linked lists: need to change implementation to head and tail throwin and 
 exception if called with an empty list
+
+in all immutable linked lists: tail recursion alternative if possible
