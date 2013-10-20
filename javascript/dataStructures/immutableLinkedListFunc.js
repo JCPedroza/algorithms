@@ -1,5 +1,6 @@
 // !!! head ant tail need to thrw an exception then called on an empty list! and your code needs to 
 // change to reflect this change
+// !!! implement tail recursive alternatives when possible
 
 /**
 *
