@@ -10,3 +10,6 @@ methods though.
 
 Scala and all: implement the Boolean and Nat classes you saw in Scala and 
 other OO languages. It's in week 4 lectures 1 and 2 (you have notes for them)
+
+javascrimp dataStructures immutable linked lists: need to change implementation to head and tail throwin and 
+exception if called with an empty list
