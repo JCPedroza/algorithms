@@ -1,6 +1,7 @@
 // !!! head ant tail need to thrw an exception then called on an empty list! and your code needs to 
 // change to reflect this change
-// !!! implement tail recursive alternatives when possible
+// !!! implement tail recursive alternatives when possible, this will generate better performance, specially
+// in functions like reverse (see accumulators for tail recursion, week 2, UoW programming languages)
 
 /**
 *
