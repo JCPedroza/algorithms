@@ -7,9 +7,13 @@
 * Performance: O(2^n).
 */
 function fiboRecursive(n){
-    if      (n === 0) return 0;
-    else if (n === 1) return 1;
+    if (n < 2) return n;
     else return fiboRecursive(n - 1) + fiboRecursive(n - 2);
+}
+
+/** Calculates the nth fibonacci number, recursively, without tail recursion, using ternary operation. */
+function fiboRecursiveTernary(n){
+    return n < 2 ? n : fiboRecursiveTernary(n - 1) + fiboRecursiveTernary(n - 2);
 }
 
 /**
