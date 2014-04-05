@@ -42,6 +42,15 @@ long recursive_ternary_factorial(long n) {
     return n < 1 ? 1 : n * recursive_ternary_factorial(n - 1);
 }
 
+// Using tail recursion
+long tail_helper(long n, long acc) {
+    if (n < 1) return acc;
+    return tail_helper(n - 1, acc * n);
+}
+long tail_factorial(long n) {
+    return tail_helper(n, 1);
+}
+
 // =========================================================================
 //                               Main()
 // =========================================================================
@@ -60,11 +69,13 @@ int main(int argc, char *argv[]) {
     double iterative_while_time   = time_it(number, times, iterative_while_factorial);
     double recursive_time         = time_it(number, times, recursive_factorial);
     double recursive_ternary_time = time_it(number, times, recursive_ternary_factorial);
+    double tail_time              = time_it(number, times, tail_factorial);
 
     double iterative_for_average     = iterative_for_time     / times;
     double iterative_while_average   = iterative_while_time   / times;
     double recursive_average         = recursive_time         / times;
     double recursive_ternary_average = recursive_ternary_time / times;
+    double tail_average              = tail_time              / times;
     
     printf("\n");
     printf("==============================================\n");
@@ -79,16 +90,18 @@ int main(int argc, char *argv[]) {
     printf("Total time:\n");
     printf("for loop:          %f\n", iterative_for_time);
     printf("while loop:        %f\n", iterative_while_time);
-    printf("recursive:         %f\n", recursive_time);
-    printf("recursive ternary: %f\n", recursive_ternary_time);
+    printf("recursion:         %f\n", recursive_time);
+    printf("recursion ternary: %f\n", recursive_ternary_time);
+    printf("tail recursion:    %f\n", tail_time);
 
     printf("\n");
 
     printf("Average time:\n");
     printf("for loop:          %f\n", iterative_for_average);
     printf("while loop:        %f\n", iterative_while_average);
-    printf("recursive:         %f\n", recursive_average);
-    printf("recursive ternary: %f\n", recursive_ternary_average);
+    printf("recursion:         %f\n", recursive_average);
+    printf("recursion ternary: %f\n", recursive_ternary_average);
+    printf("tail recursion:    %f\n", tail_average);
 
     printf("\n");
     printf("==============================================\n");
