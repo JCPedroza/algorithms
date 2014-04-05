@@ -77,18 +77,18 @@ int main(int argc, char *argv[]) {
     printf("\n");
 
     printf("Total time:\n");
-    printf("iterative_for_factorial:     %f\n", iterative_for_time);
-    printf("iterative_while_factorial:   %f\n", iterative_while_time);
-    printf("recursive_factorial:         %f\n", recursive_time);
-    printf("recursive_ternary_factorial: %f\n", recursive_ternary_time);
+    printf("for loop:          %f\n", iterative_for_time);
+    printf("while loop:        %f\n", iterative_while_time);
+    printf("recursive:         %f\n", recursive_time);
+    printf("recursive ternary: %f\n", recursive_ternary_time);
 
     printf("\n");
 
     printf("Average time:\n");
-    printf("iterative_for_factorial:     %f\n", iterative_for_average);
-    printf("iterative_while_factorial:   %f\n", iterative_while_average);
-    printf("recursive_factorial:         %f\n", recursive_average);
-    printf("recursive_ternary_factorial: %f\n", recursive_ternary_average);
+    printf("for loop:          %f\n", iterative_for_average);
+    printf("while loop:        %f\n", iterative_while_average);
+    printf("recursive:         %f\n", recursive_average);
+    printf("recursive ternary: %f\n", recursive_ternary_average);
 
     printf("\n");
     printf("==============================================\n");
