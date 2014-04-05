@@ -1,3 +1,10 @@
+// To use from console:
+// ./factorial <factorial to calculate> <number of repetitions>
+
+// Each implementation of the factorial algorithm will calculate the
+// <factorial to calculate>, <number of repetitions> times, measuring
+// total and average run time. Results will be prited to console.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
