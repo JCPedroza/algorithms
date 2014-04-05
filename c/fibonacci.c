@@ -45,6 +45,17 @@ long recursive_ternary_fibonacci(long n) {
     return n < 2 ? n : recursive_ternary_fibonacci(n - 1) + recursive_ternary_fibonacci(n - 2);
 }
 
+// Using tail recursion
+long tail_helper(long term, long val, long prev) {
+    if (term == 0) return prev;
+    if (term == 1) return val;
+    return tail_helper(term - 1, val + prev, val);
+}
+long tail_fibonacci(long n) {
+    return tail_helper(n, 1, 0);
+
+}
+
 // Using analytic approach
 long analytic_fibonacci(long n) {
     return floor( (pow(((1 + sqrt(5))/2), n) - pow(1 - ((1 + sqrt(5))/2), n)) / sqrt(5) );
@@ -56,18 +67,60 @@ long analytic_fibonacci(long n) {
 
 int main(int argc, char *argv[]) {
 
-    long numbera = 10;
-    long numberb = 11;
-    long numberc = 12;
-    long numberd = 13;
+    if (argc != 3) {
+        printf("\nusage: factorial <factorial to calculate> <repetitions>\n\n");
+        return 1;
+    }
 
-    long a = analytic_fibonacci(numbera);
-    long b = analytic_fibonacci(numberb);
-    long c = analytic_fibonacci(numberc);
-    long d = analytic_fibonacci(numberd);
+    long number = atol(argv[1]);
+    long times  = atol(argv[2]);
 
-    printf("\n %ld fibonacci is: %ld\n\n", numbera, a);
-    printf("\n %ld fibonacci is: %ld\n\n", numberb, b);
-    printf("\n %ld fibonacci is: %ld\n\n", numberc, c);
-    printf("\n %ld fibonacci is: %ld\n\n", numberd, d);
+    double for_time               = time_it(number, times, for_fibonacci);
+    double while_time             = time_it(number, times, while_fibonacci);
+    double recursive_time         = time_it(number, times, recursive_fibonacci);
+    double recursive_ternary_time = time_it(number, times, recursive_ternary_fibonacci);
+    double tail_time              = time_it(number, times, tail_fibonacci);
+    double analytic_time          = time_it(number, times, analytic_fibonacci);
+
+    double for_average               = for_time               / times;
+    double while_average             = while_time             / times;
+    double recursive_average         = recursive_time         / times;
+    double recursive_ternary_average = recursive_ternary_time / times;
+    double tail_average              = tail_time              / times;
+    double analytic_average          = analytic_time          / times;
+
+    printf("\n");
+    printf("==============================================\n");
+    printf("==============================================\n\n");
+    printf("Fibonacci Algorithm\n");
+    printf("Fibonacci calculated: %ld\n", number);
+    printf("Number of times: %ld\n", times);
+    printf("(time in seconds) \n");
+    printf("----------------------------------------------\n");
+    printf("\n");
+
+    printf("Total time:\n");
+    printf("for loop:          %f\n", for_time);
+    printf("while loop:        %f\n", while_time);
+    printf("recursion:         %f\n", recursive_time);
+    printf("recursion ternary: %f\n", recursive_ternary_time);
+    printf("tail recursion:    %f\n", tail_time);
+    printf("analytic:          %f\n", analytic_time);
+
+    printf("\n");
+
+    printf("Average time:\n");
+    printf("for loop:          %f\n", for_average);
+    printf("while loop:        %f\n", while_average);
+    printf("recursion:         %f\n", recursive_average);
+    printf("recursion ternary: %f\n", recursive_ternary_average);
+    printf("tail recursion:    %f\n", tail_average);
+    printf("analytic:          %f\n", analytic_average);
+
+
+    printf("\n");
+    printf("==============================================\n");
+    printf("==============================================\n\n");
+
+    return 0;
 }
