@@ -1,6 +1,8 @@
 build:
-	rm -f factorial fibonacci
-	clang -o factorial factorial.c timeutils.c
-	clang -o fibonacci fibonacci.c timeutils.c
+	rm -f *.out
+	clang -o factorial.out factorial.c timeutils.c
+	clang -o fibonacci.out fibonacci.c timeutils.c
 
+clean:
+	rm -f *.out
 
