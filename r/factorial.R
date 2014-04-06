@@ -6,13 +6,13 @@
 # ===============================
 
 # Computes factorial of n using recursion.
-factorialRecursive <- function(n){
+factorialRecursive <- function(n) {
   if (n == 1) 1
   else n * (factorialRecursive(n - 1))
 }
 
 # Computes factorial of n using tail recursion.
-factorialTailRecursive <- function(n){
+factorialTailRecursive <- function(n) {
   recursion <- function(n, acc){
     if (n < 1) acc
     else recursion(n-1, acc * n)
@@ -21,9 +21,9 @@ factorialTailRecursive <- function(n){
 }
 
 # Computes factorial of n using iteration and while loop.
-factorialIterW <- function(n){
+factorialIterW <- function(n) {
   acc <- 1
-  while (n > 1){
+  while (n > 1) {
     acc <- acc * n
     n   <- n - 1
   }
@@ -31,7 +31,7 @@ factorialIterW <- function(n){
 }
 
 # Computes factorial of n using iteration and for loop.
-factorialIterF <- function(n){
+factorialIterF <- function(n) {
   acc <- 1
   for (i in n:1) acc = acc * i
   acc
