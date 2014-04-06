@@ -15,8 +15,7 @@ object Fibonacci extends App{
   * Performance: O(2^n).
   */
   def fiboRecursive(n: Int): Int = {
-    if      (n == 0) 0
-    else if (n == 1) 1
+    if      (n < 2) n
     else    fiboRecursive(n-1) + fiboRecursive(n-2)
   }
   
