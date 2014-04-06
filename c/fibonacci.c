@@ -56,7 +56,7 @@ long tail_fibonacci(long n) {
 
 }
 
-// Using analytic approach
+// Using analytic approach (Binet's formula)
 long analytic_fibonacci(long n) {
     return floor( (pow(((1 + sqrt(5))/2), n) - pow(1 - ((1 + sqrt(5))/2), n)) / sqrt(5) );
 }
