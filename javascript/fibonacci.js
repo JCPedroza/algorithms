@@ -6,21 +6,21 @@
 * Calculates the nth fibonacci number, recusrively, without tail recursion.
 * Performance: O(2^n).
 */
-function fiboRecursive(n){
+function fiboRecursive(n) {
     if (n < 2) return n;
     else return fiboRecursive(n - 1) + fiboRecursive(n - 2);
 }
 
 /** Calculates the nth fibonacci number, recursively, without tail recursion, using ternary operation. */
-function fiboRecursiveTernary(n){
+function fiboRecursiveTernary(n) {
     return n < 2 ? n : fiboRecursiveTernary(n - 1) + fiboRecursiveTernary(n - 2);
 }
 
 /**
 * Calculates the nth fibonacci number, using tail recursion. 
 */
-function fiboTailRecursive(n){
-    function recursion(n, a, b){
+function fiboTailRecursive(n) {
+    function recursion(n, a, b) {
         if (n > 0) return recursion(n - 1, b, a + b);
         else       return a;
     }
@@ -30,10 +30,10 @@ function fiboTailRecursive(n){
 /**
 * Calculates the nth fibonacci number, using iteration.
 */
-function fiboIter(n){
+function fiboIter(n) {
     var a = 0;
     var b = 1;
-    for (var i = 0; i < n; i++){
+    for (var i = 0; i < n; i++) {
         var buffer = a;
         a = b;
         b = buffer + b;
@@ -44,7 +44,7 @@ function fiboIter(n){
 /** 
 * Calculates the nth fibonacci number, using Binet's formula
 */
-function fiboBinet(n){
+function fiboBinet(n) {
     return (Math.pow(1 + Math.sqrt(5), n) - (Math.pow(1-Math.sqrt(5), n))) /
            (Math.pow(2, n) * Math.sqrt(5));
 }
@@ -54,8 +54,8 @@ function fiboBinet(n){
 * F(2n-1) = F(n)^2 + F(n-1)^2
 * F(2n) = (2F(n-1) + F(n))*F(n)
 */
-function fib(n){
-    function fibs(n){
+function fib(n) {
+    function fibs(n) {
         // console.log("fibs called with " + n);
         if (n === 1) return [1, 0];
         else{
