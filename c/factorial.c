@@ -55,7 +55,7 @@ long tail_factorial(long n) {
 //                               Main()
 // =========================================================================
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
 
     if (argc != 3) {
         printf("\nusage: factorial <factorial to calculate> <repetitions>\n\n");
