@@ -14,12 +14,13 @@ find the sum of the even-valued terms.
 
 #include <stdio.h>
 
-unsigned long even_fibonacci_sum(unsigned long limit) {
+// First implementation.
+long even_fibonacci_sum(long limit) {
 
-    unsigned long current = 1; 
-    unsigned long last    = 0; 
-    unsigned long sum     = 0;
-    unsigned long buffer;
+    long sum     = 0;
+    long current = 1; 
+    long last    = 0; 
+    long buffer;
 
     while (current < limit) {
 
@@ -36,9 +37,30 @@ unsigned long even_fibonacci_sum(unsigned long limit) {
     return sum;
 }
 
+// We can get rid of the testing for even values. Every third Fibonacci number is even.
+// Change the program so that only every third number is added.
+long better_even_fibonacci_sum(long limit) {
+
+    long sum    = 0;
+    long first  = 1;
+    long second = 1;
+    long third  = first + second;
+
+    while (third < limit) {
+        sum += third;
+        first  = second + third;
+        second = third  + first;
+        third  = first  + second;
+    }
+
+    return sum;
+
+}
+
 int main(int argc, char* argv[]) {
 
-    printf("\n\n%ld\n\n", even_fibonacci_sum(4000000));
+    printf("\n%ld\n\n", even_fibonacci_sum(4000000));
+    printf("\n%ld\n\n", better_even_fibonacci_sum(4000000));
 
     return 0;
 } 
