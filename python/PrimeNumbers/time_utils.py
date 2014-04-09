@@ -17,7 +17,7 @@ class Clock:
         total = time.clock() - start
         return (f.__name__ + ": ", "{:.12f}".format(total), "{:.12f}".format(total / (range_end - range_start)))
 
-    def __run_test(self, range_start, range_end, repetitions):
+    def __run_tests(self, range_start, range_end, repetitions):
         results = []
         index   = 0
         for function in self.functions:
@@ -27,7 +27,7 @@ class Clock:
 
     def run_tests(self, test_name, range_start = 1, range_end = 1000, repetitions = 1):
 
-        results = self.__run_test(range_start, range_end, repetitions)
+        results = self.__run_tests(range_start, range_end, repetitions)
 
         top_string = """
 ====================================================
