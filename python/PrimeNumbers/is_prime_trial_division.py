@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import math
-import time_utils
+from time_utils import Clock
 
 # ======================================================
 # Algorithms for primarlity test using trial division.
@@ -106,48 +106,18 @@ def is_prime_trial_division_6(n):
 
 
 # ======================================================
-#                Measuring Execution Time
+#                  Measuring and Results
 # ======================================================
 
 from_number = 2
-the_number  = 2000000
+to_number   = 10000
+repetitions = 10
 
-# is_prime_trial_division_1_time = time_utils.clock_range(is_prime_trial_division_1, from_number, the_number)
-# is_prime_trial_division_2_time = time_utils.clock_range(is_prime_trial_division_2, from_number, the_number)
-is_prime_trial_division_3_time = time_utils.clock_range(is_prime_trial_division_3, from_number, the_number)
-is_prime_trial_division_4_time = time_utils.clock_range(is_prime_trial_division_4, from_number, the_number)
-is_prime_trial_division_5_time = time_utils.clock_range(is_prime_trial_division_5, from_number, the_number)
-is_prime_trial_division_6_time = time_utils.clock_range(is_prime_trial_division_6, from_number, the_number)
+clock = Clock(is_prime_trial_division_3, is_prime_trial_division_4, 
+              is_prime_trial_division_5, is_prime_trial_division_6)
 
-# ======================================================
-#                     Print Results
-# ======================================================
+print clock.run_tests("is prime", from_number, to_number, repetitions)
 
-print ""
-print "======================================================="
-print ""
-
-print "Total:"
-# print "is_prime_trial_division_1: " + str(is_prime_trial_division_1_time[0])
-# print "is_prime_trial_division_2: " + str(is_prime_trial_division_2_time[0])
-print "is_prime_trial_division_3: " + str(is_prime_trial_division_3_time[0])
-print "is_prime_trial_division_4: " + str(is_prime_trial_division_4_time[0])
-print "is_prime_trial_division_5: " + str(is_prime_trial_division_5_time[0])
-print "is_prime_trial_division_6: " + str(is_prime_trial_division_6_time[0])
-
-print ""
-
-print "Average:"
-# print "is_prime_trial_division_1: " + "{:.12f}".format(is_prime_trial_division_1_time[1])
-# print "is_prime_trial_division_2: " + "{:.12f}".format(is_prime_trial_division_2_time[1])
-print "is_prime_trial_division_3: " + "{:.12f}".format(is_prime_trial_division_3_time[1])
-print "is_prime_trial_division_4: " + "{:.12f}".format(is_prime_trial_division_4_time[1])
-print "is_prime_trial_division_5: " + "{:.12f}".format(is_prime_trial_division_5_time[1])
-print "is_prime_trial_division_6: " + "{:.12f}".format(is_prime_trial_division_6_time[1])
-
-print ""
-print "======================================================="
-print ""
 
 
 
