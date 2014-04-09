@@ -17,7 +17,8 @@ What is the largest prime factor of the number 600851475143 ?
 // ==============================================================
 
 long is_prime_iterative(long n) {
-    for (int i = 2; i < n; i++)
+    long limit = sqrt(n);
+    for (int i = 2; i <= limit; i++)
         if (n % i == 0) return 0;
     return 1;
 }
