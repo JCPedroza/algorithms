@@ -1,8 +1,33 @@
-var factorial_recursive = {
+var factorial_while = {
     arg x;
-    if  (x == 0)
-        { 1 }
-        { factorial_recursive.(x-1) * x }
+    var acc = 1;
+    while {x > 0}
+          {acc = acc * x; x = x - 1};
+    acc;
 };
 
-factorial_recursive.value(10);
+var factorial_for = {
+    arg x;
+    var acc = 1;
+    for (1, x)
+        {arg i; acc = acc * i};
+    acc;
+};
+
+var factorial_recursive = {
+    arg x;
+    if (x == 0)
+       {1}
+       {factorial_recursive.value(x - 1) * x}
+};
+
+var factorial_tail_recursive = {
+    arg x;
+    var tail_helper = {
+        arg x, acc;
+        if (x < 1)
+           {acc}
+           {tail_helper.value(x - 1, acc * x)};
+    };
+    tail_helper.value(x, 1);
+};
