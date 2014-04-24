@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-    for i := 0; i <= 20; i++ {
+    for i := 1; i <= 20; i++ {
         fmt.Println(fibonacci(i))
         fmt.Println(fibonacciRecursive(i))
         fmt.Println(fibonacciTail(i))
@@ -39,9 +39,6 @@ func fibonacciTail(n int) int {
     return tailHelper(n, 1, 0)
 }
 func tailHelper(term, val, prev int) int {
-    if term == 0 {
-        return prev
-    }
     if term == 1 {
         return val
     }
