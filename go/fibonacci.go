@@ -8,12 +8,14 @@ import (
 )
 
 func main() {
+    c := fibGenerator()
     for i := 1; i <= 20; i++ {
         fmt.Println(fibonacci(i))
         fmt.Println(fibonacciRecursive(i))
         fmt.Println(fibonacciTail(i))
         fmt.Println(fibonacciBinet(i))
-        println()
+        fmt.Println(<- c)
+        fmt.Println("")
     }
 }
 
@@ -50,3 +52,16 @@ func fibonacciBinet(num int) int {
     var n float64 = float64(num);
     return int( ((math.Pow(((1 + math.Sqrt(5)) / 2), n) - math.Pow(1 - ((1 + math.Sqrt(5)) / 2), n)) / math.Sqrt(5)) + 0.5 )
 }
+
+// Using channel, iterator, go routine
+// http://codereview.stackexchange.com/q/28386/30763
+func fibGenerator() chan int {
+    c:= make(chan int)
+    go func() {
+        for i, j := 1, 0; ; i, j = i + j, i {
+            c <- i
+        }
+    }()
+    return c
+}
+
