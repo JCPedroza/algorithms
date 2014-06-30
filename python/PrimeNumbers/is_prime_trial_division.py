@@ -110,7 +110,7 @@ def is_prime_trial_division_6(n):
 # ======================================================
 
 from_number = 2
-to_number   = 400000
+to_number   = 4000
 repetitions = 2
 
 clock = Clock(is_prime_trial_division_3, is_prime_trial_division_4, 
