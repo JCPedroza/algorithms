@@ -18,3 +18,7 @@ def sin(x):
 
 def arcsin(x):
     return np.arcsin(x)
+
+def floor(x):
+    return math.floor(x)
+
