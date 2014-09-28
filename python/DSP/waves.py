@@ -5,7 +5,6 @@ import numpy as np
 freq      = 2.0
 amp       = 0.6
 fs        = 44100.0
-pi        = np.pi
 timeindex = np.arange(0, 1, 1/fs)
 
 def sine(n, freq, amp):

@@ -1,6 +1,8 @@
 import math
 import numpy as np
 
+pi = np.pi
+
 def frac(x):
     """ Returns the fractional part of x """
     return x - math.floor(x)
