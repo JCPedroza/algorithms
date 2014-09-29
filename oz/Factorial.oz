@@ -2,22 +2,21 @@ declare
 % Recursive factorial function
 fun {FactorialR N}
    if N<1 then 1
-   else
-	  N * {FactorialR N-1}
+   else N * {FactorialR N-1}
    end
 end
 
 declare
 % Tail recursive factorial function
 fun {FactorialTR N}
-   fun {Loop N Acc}
-	  if N < 1 then Acc
-	  else
-		 {Loop N-1 N*Acc}
-	  end
+   local Loop in
+      fun {Loop N Acc}
+   	     if N < 1 then Acc
+	     else {Loop N-1 N*Acc}
+	     end
+      end
+      {Loop N 1}
    end
-in
-   {Loop N 1}
 end
 
 declare
