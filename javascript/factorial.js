@@ -43,8 +43,8 @@ function factorialIterF(n){
 //    Timing the Algorithms
 // ===============================
 
-var num     = 200;
-var repeats = 5000;
+var num     = 1000;
+var repeats = 10000;
 
 /** Measures running time of a function, using console.time() */
 function performance(f, name){
