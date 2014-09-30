@@ -17,7 +17,7 @@ function factorialRecursive(n){
 function factorialTailRecursive(n){
     function recursion(n, acc){
         if (n < 1) return acc;
-        else       return recursion(n - 1, acc *= n);
+        else       return recursion(n - 1, acc * n);
     }
     return recursion(n, 1);
 }
@@ -43,7 +43,7 @@ function factorialIterF(n){
 //    Timing the Algorithms
 // ===============================
 
-var num     = 150;
+var num     = 200;
 var repeats = 5000;
 
 /** Measures running time of a function, using console.time() */
