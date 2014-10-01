@@ -3,9 +3,11 @@ import Fibonacci as F
 sys.path.append('../')
 import Timeutils as T
 
+sys.setrecursionlimit(1500)
+
 init = 0
-end  = 900
-range_repeats = 10
+end  = 1400
+range_repeats = 2
 single_repeats = 200
 
 print "\nRuntime for a range of inputs: from {0} to {1}, {2} repeats:".format(init, end, range_repeats)
@@ -38,6 +40,7 @@ print "Large Step Recurrence:   ", time_fibLSR
 
 
 print "\nRuntime for constant input {0}, {1} repeats: ".format(end, single_repeats)
+
 time_fibR = "Takes too long."
 print "Recursive: ", time_fibR
 
