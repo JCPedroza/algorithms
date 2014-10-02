@@ -65,5 +65,7 @@ print "Matrix:                  ", time_fibMatrix
 time_fibLSR = T.resource_runtime(F.fibLSR, end, single_repeats)[0]
 print "Large Step Recurrence:   ", time_fibLSR
 
+print ""
+
 
 
