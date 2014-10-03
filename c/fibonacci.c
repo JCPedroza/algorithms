@@ -53,7 +53,6 @@ long tail_helper(long term, long val, long prev) {
 }
 long tail_fibonacci(long n) {
     return tail_helper(n, 1, 0);
-
 }
 
 // Using analytic approach (Binet's formula)
@@ -68,7 +67,7 @@ long analytic_fibonacci(long n) {
 int main(int argc, char* argv[]) {
 
     if (argc != 3) {
-        printf("\nusage: factorial <factorial to calculate> <repetitions>\n\n");
+        printf("\nusage: fibonacci <fibonacci to calculate> <repetitions>\n\n");
         return 1;
     }
 
