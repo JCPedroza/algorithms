@@ -3,8 +3,8 @@ sys.path.append('../../')
 import Timeutils as T
 
 test_lists = []
-list_size = 2000
-list_count = 2000
+list_size = 1000
+list_count = 1000
 
 line1 = [2, 0, 2, 4]
 line2 = [0, 0, 2, 2]
