@@ -9,4 +9,4 @@ In this function, you are always sliding the values in the list towards the fron
 - [0, 0, 2, 2] should return [4, 0, 0, 0]
 - [2, 2, 0, 0] should return [4, 0, 0, 0]
 - [2, 2, 2, 2] should return [4, 4, 0, 0]
-- [8, 16, 16, 8] should return [8, 32, 8, 0
+- [8, 16, 16, 8] should return [8, 32, 8, 0]
