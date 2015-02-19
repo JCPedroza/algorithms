@@ -1,5 +1,4 @@
-import time
-import resource
+import time, resource, random
 
 def runtime(f, num, repeats):
     """
@@ -48,3 +47,31 @@ def resource_runtime_range(f, init, end, repeats):
     end   = resource.getrusage(resource.RUSAGE_SELF)
     return (end.ru_utime - start.ru_utime, 
             end.ru_stime - start.ru_stime)
+
+
+# Working with iterables
+
+def create_lists(count, size):
+    """
+    Returns a list of lists, count is the number of lists, and size is the length
+    of the lists.
+    """
+    return_list = []
+    for i in range(count):
+        return_list.append([random.randrange(2) for j in range(size)])
+    return return_list
+
+def runtime_lists(f, iterables):
+    """
+    Measures running time of a function using time.clock().
+    Returns the tuple (total, average).
+    The iterable parameter is a list of iterables.
+    The function will be called with every iterable in iterables as argument.
+    """
+    start = time.clock()
+    for i in iterables:
+        f(i)
+    end = time.clock()
+    total = end - start
+    return (total, total / len(iterables))
+
