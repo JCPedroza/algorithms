@@ -27,7 +27,7 @@ def factorial_r_recursion(n)
     if n < 2
         1
     else
-        n * factorial_r(n - 1)
+        n * factorial_r_recursion(n - 1)
     end
 end
 
@@ -42,7 +42,7 @@ def factorial_tr_recursion(n, acc)
     if n < 2
         acc
     else
-        factorial_tr(n - 1, n * acc)
+        factorial_tr_recursion(n - 1, n * acc)
     end
 end
 
