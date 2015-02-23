@@ -64,13 +64,6 @@ def factorial_re(n)
 end
 
 
-# Iterative with Range.inject
-def factorial_ri(n)
-    validate(n)
-    (1 .. n).inject(:*) || 1 # || 1 handles n = 0 so !0 = 1
-end
-
-
 # Iterative with Range.reduce
 def factorial_rr(n)
     validate(n)
@@ -87,7 +80,7 @@ end
 
 # Helper for argument validation
 def validate(n)
-    if n < 0 or not n.kind_of? Integer
+    unless n.is_a?(Integer) && n >= 0
         raise ArgumentError, "n must be an integer and >= 0"
     end
 end 

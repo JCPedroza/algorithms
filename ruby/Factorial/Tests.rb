@@ -10,7 +10,6 @@ Benchmark.bm(25) do |b|
     b.report('recursion:') {m.times {factorial_r(n)}}
     b.report('tail recursion') {m.times {factorial_tr(n)}}
     b.report('iterative range.each') {m.times {factorial_re(n)}}
-    b.report('iterative range.inject:') {m.times {factorial_ri(n)}}
     b.report('iterative range.reduce:') {m.times {factorial_rr(n)}}
     b.report("stirling's approximation:") {m.times {factorial_sa(n)}}
 
