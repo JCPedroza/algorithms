@@ -1,4 +1,4 @@
-import Merge1, Merge2, sys
+import Merge1, Merge2, Merge3, sys
 sys.path.append('../../')
 import Timeutils as T
 
@@ -39,6 +39,13 @@ assert Merge2.merge(line4) == line4result
 assert Merge2.merge(line5) == line5result
 assert Merge2.merge(line6) == line6result
 
+assert Merge3.merge(line1) == line1result
+assert Merge3.merge(line2) == line2result
+assert Merge3.merge(line3) == line3result
+assert Merge3.merge(line4) == line4result
+assert Merge3.merge(line5) == line5result
+assert Merge3.merge(line6) == line6result
+
 print "all tests passed"
 print "creating test lists..."
 the_lists = T.create_lists(list_count, list_size)
@@ -47,6 +54,7 @@ print "performing tests..."
 
 merge1times = T.runtime_lists(Merge1.merge, the_lists)
 merge2times = T.runtime_lists(Merge2.merge, the_lists)
+merge3times = T.runtime_lists(Merge3.merge, the_lists)
 
 print ""
 print "================="
@@ -57,6 +65,9 @@ print "Merge1 average: " + str(merge1times[1])
 print ""
 print "Merge2 total:   " + str(merge2times[0])
 print "Merge2 average: " + str(merge2times[1])
+print ""
+print "Merge3 total:   " + str(merge3times[0])
+print "Merge3 average: " + str(merge3times[1])
 print ""
 print "================="
 print ""
