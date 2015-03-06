@@ -98,7 +98,6 @@ class TwentyFortyEight:
         """
         # Note: move() method references two dictionaries:
         # self._initial_tiles and self._line_lengths defined in self.__init__
-        
         tiles_same = True
         for initial_tile in self._initial_tiles[direction]:
             # Create line from grid row or column depending on direction
