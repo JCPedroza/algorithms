@@ -8,7 +8,7 @@ NMOVES = 98
 def time_move(module, ntrials, nmoves):
     """ Times the move() method """
     start = resource.getrusage(resource.RUSAGE_SELF)
-    Game =  module.TwentyFortyEight(4, 4)
+    Game =  module.TwentyFortyEight(10, 10)
 
     for i in range(ntrials):
         Game.reset()
