@@ -1,11 +1,9 @@
-import Anon, Benjamin, LiYue, Mario, Merge1, Merge2, Paul, TimKautz
-import Boris, Kevin
+import Anon, Benjamin, LiYue
 import sys
 sys.path.append('../../')
 import Timeutils as T
 
-modules = [Anon, Benjamin, LiYue, Mario, Merge1, 
-    Merge2, Paul, TimKautz, Boris, Kevin]
+modules = [Anon, Benjamin, LiYue]
 
 test_lists = []
 list_size = 1000
@@ -46,13 +44,6 @@ print "performing time measurements..."
 anontimes     = T.runtime_lists(Anon.merge, the_lists)
 benjamintimes = T.runtime_lists(Benjamin.merge, the_lists)
 liyuetimes    = T.runtime_lists(LiYue.merge, the_lists)
-mariotimes    = T.runtime_lists(Mario.merge, the_lists)
-merge1times   = T.runtime_lists(Merge1.merge, the_lists)
-merge2times   = T.runtime_lists(Merge2.merge, the_lists)
-paultimes     = T.runtime_lists(Paul.merge, the_lists)
-timtimes      = T.runtime_lists(TimKautz.merge, the_lists)
-boristimes    = T.runtime_lists(Boris.merge, the_lists)
-kevintimes    = T.runtime_lists(Kevin.merge, the_lists)
 
 print ""
 print "================="
@@ -67,26 +58,6 @@ print ""
 print "LiYue total:      " + str(liyuetimes[0])
 print "LiYue average:    " + str(liyuetimes[1])
 print ""
-print "Mario total:      " + str(mariotimes[0])
-print "Mario average:    " + str(mariotimes[1])
-print ""
-print "Merge1 total:     " + str(merge1times[0])
-print "Merge1 average:   " + str(merge1times[1])
-print ""
-print "Merge2 total:     " + str(merge2times[0])
-print "Merge2 average:   " + str(merge2times[1])
-print ""
-print "Paul total:       " + str(paultimes[0])
-print "Paul average:     " + str(paultimes[1])
-print ""
-print "Tim total:        " + str(timtimes[0])
-print "Tim average:      " + str(timtimes[1])
-print ""
-print "Boris total:      " + str(boristimes[0])
-print "Boris average:    " + str(boristimes[1])
-print ""
-print "Kevin total:      " + str(kevintimes[0])
-print "Kevin average:    " + str(kevintimes[1])
 print ""
 
 print "================="
