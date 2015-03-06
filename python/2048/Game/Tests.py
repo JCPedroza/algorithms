@@ -1,5 +1,5 @@
 import FirstTry, Benjamin, BenjaminV2, TimKautz, Anon
-import Paul, Mario, LiYue
+import Paul, Mario, LiYue, Kevin, Boris
 import resource
 
 NTRIALS = 100
@@ -41,7 +41,8 @@ print "Anon        ", time_move(Anon, NTRIALS, NMOVES)
 print "Paul        ", time_move(Paul, NTRIALS, NMOVES)
 print "Mario       ", time_move(Mario, NTRIALS, NMOVES)
 print "LiYue       ", time_move(LiYue, NTRIALS, NMOVES)
-
+print "Boris       ", time_move(Boris, NTRIALS, NMOVES)
+print "Kevin       ", time_move(Kevin, NTRIALS, NMOVES)
 
 
 print "\nTiming new_tile() methods:"
@@ -53,4 +54,6 @@ print "Anon        ", time_new_tile(Anon, NTRIALS, NMOVES)
 print "Paul        ", time_new_tile(Paul, NTRIALS, NMOVES)
 print "Mario       ", time_new_tile(Mario, NTRIALS, NMOVES)
 print "LiYue       ", time_new_tile(LiYue, NTRIALS, NMOVES)
+print "Boris       ", time_new_tile(Boris, NTRIALS, NMOVES)
+print "Kevin       ", time_new_tile(Kevin, NTRIALS, NMOVES)
 print

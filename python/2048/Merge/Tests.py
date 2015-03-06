@@ -1,9 +1,11 @@
 import Anon, Benjamin, LiYue, Mario, Merge1, Merge2, Paul, TimKautz
+import Boris, Kevin
 import sys
 sys.path.append('../../')
 import Timeutils as T
 
-modules = [Anon, Benjamin, LiYue, Mario, Merge1, Merge2, Paul, TimKautz]
+modules = [Anon, Benjamin, LiYue, Mario, Merge1, 
+    Merge2, Paul, TimKautz, Boris, Kevin]
 
 test_lists = []
 list_size = 1000
@@ -49,6 +51,8 @@ merge1times   = T.runtime_lists(Merge1.merge, the_lists)
 merge2times   = T.runtime_lists(Merge2.merge, the_lists)
 paultimes     = T.runtime_lists(Paul.merge, the_lists)
 timtimes      = T.runtime_lists(TimKautz.merge, the_lists)
+boristimes    = T.runtime_lists(Boris.merge, the_lists)
+kevintimes    = T.runtime_lists(Kevin.merge, the_lists)
 
 print ""
 print "================="
@@ -77,6 +81,12 @@ print "Paul average:     " + str(paultimes[1])
 print ""
 print "Tim total:        " + str(timtimes[0])
 print "Tim average:      " + str(timtimes[1])
+print ""
+print "Boris total:      " + str(boristimes[0])
+print "Boris average:    " + str(boristimes[1])
+print ""
+print "Kevin total:      " + str(kevintimes[0])
+print "Kevin average:    " + str(kevintimes[1])
 print ""
 
 print "================="
