@@ -1,14 +1,14 @@
-import FirstTry, Benjamin, BenjaminV2, TimKautz, Anon
-import Paul, Mario, LiYue, Kevin, Boris
+import FirstTry, Benjamin, BenjaminV2, TimKautz
+import Paul, Mario, LiYue, Kevin, SecondTry
 import resource
 
-NTRIALS = 100
-NMOVES = 98
+NTRIALS = 3000
+NMOVES = 4
 
 def time_move(module, ntrials, nmoves):
     """ Times the move() method """
     start = resource.getrusage(resource.RUSAGE_SELF)
-    Game =  module.TwentyFortyEight(10, 10)
+    Game =  module.TwentyFortyEight(3, 3)
 
     for i in range(ntrials):
         Game.reset()
@@ -21,7 +21,7 @@ def time_move(module, ntrials, nmoves):
 def time_new_tile(module, ntrials, times):
     """ Times the new_tile() method """
     start = resource.getrusage(resource.RUSAGE_SELF)
-    Game =  module.TwentyFortyEight(10, 10)
+    Game =  module.TwentyFortyEight(3, 3)
 
     for i in range(ntrials):
         Game.reset()
@@ -34,26 +34,23 @@ def time_new_tile(module, ntrials, times):
 
 print "\nTiming move() methods: "
 print "FirstTry    ", time_move(FirstTry, NTRIALS, NMOVES)
+print "SecondTry   ", time_move(SecondTry, NTRIALS, NMOVES)
 print "Benjamin    ", time_move(Benjamin, NTRIALS, NMOVES)
 print "BenjaminV2  ", time_move(BenjaminV2, NTRIALS, NMOVES)
 print "TimKautz    ", time_move(TimKautz, NTRIALS, NMOVES)
-print "Anon        ", time_move(Anon, NTRIALS, NMOVES)
 print "Paul        ", time_move(Paul, NTRIALS, NMOVES)
 print "Mario       ", time_move(Mario, NTRIALS, NMOVES)
 print "LiYue       ", time_move(LiYue, NTRIALS, NMOVES)
-print "Boris       ", time_move(Boris, NTRIALS, NMOVES)
 print "Kevin       ", time_move(Kevin, NTRIALS, NMOVES)
-
 
 print "\nTiming new_tile() methods:"
 print "FirstTry    ", time_new_tile(FirstTry, NTRIALS, NMOVES)
+print "SecondTry   ", time_new_tile(SecondTry, NTRIALS, NMOVES)
 print "Benjamin    ", time_new_tile(Benjamin, NTRIALS, NMOVES)
 print "BenjaminV2  ", time_new_tile(BenjaminV2, NTRIALS, NMOVES)
 print "TimKautz    ", time_new_tile(TimKautz, NTRIALS, NMOVES)
-print "Anon        ", time_new_tile(Anon, NTRIALS, NMOVES)
 print "Paul        ", time_new_tile(Paul, NTRIALS, NMOVES)
 print "Mario       ", time_new_tile(Mario, NTRIALS, NMOVES)
 print "LiYue       ", time_new_tile(LiYue, NTRIALS, NMOVES)
-print "Boris       ", time_new_tile(Boris, NTRIALS, NMOVES)
 print "Kevin       ", time_new_tile(Kevin, NTRIALS, NMOVES)
 print

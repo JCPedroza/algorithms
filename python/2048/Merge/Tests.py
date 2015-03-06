@@ -1,9 +1,9 @@
-import Anon, Benjamin, LiYue
+import Anon, Benjamin, LiYue, Tim
 import sys
 sys.path.append('../../')
 import Timeutils as T
 
-modules = [Anon, Benjamin, LiYue]
+modules = [Anon, Benjamin, LiYue, Tim]
 
 test_lists = []
 list_size = 1000
@@ -44,6 +44,7 @@ print "performing time measurements..."
 anontimes     = T.runtime_lists(Anon.merge, the_lists)
 benjamintimes = T.runtime_lists(Benjamin.merge, the_lists)
 liyuetimes    = T.runtime_lists(LiYue.merge, the_lists)
+timtimes      = T.runtime_lists(Tim.merge, the_lists)
 
 print ""
 print "================="
@@ -58,6 +59,8 @@ print ""
 print "LiYue total:      " + str(liyuetimes[0])
 print "LiYue average:    " + str(liyuetimes[1])
 print ""
+print "Tim total:      " + str(timtimes[0])
+print "Tim average:    " + str(timtimes[1])
 print ""
 
 print "================="
