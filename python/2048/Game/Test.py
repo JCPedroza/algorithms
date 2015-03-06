@@ -1,6 +1,6 @@
-import FirstTry, Another2048, sys, resource
-sys.path.append('../../')
-import Timeutils
+import FirstTry, Benjamin, BenjaminV2, TimKautz, Anon
+import Paul, Mario
+import resource
 
 NTRIALS = 100
 NMOVES = 98
@@ -32,15 +32,23 @@ def time_new_tile(module, ntrials, times):
     return end.ru_utime - start.ru_utime
 
 
-print
-print "FirstTry move(): ", time_move(FirstTry, NTRIALS, NMOVES)
-print "Another  move(): ", time_move(Another2048, NTRIALS, NMOVES)
-print
-print "FirstTry new_tile(): ", time_new_tile(FirstTry, NTRIALS, NMOVES)
-print "Another  new_tile(): ", time_new_tile(Another2048, NTRIALS, NMOVES)
-print
+print "\nTiming move() methods: "
+print "FirstTry    ", time_move(FirstTry, NTRIALS, NMOVES)
+print "Benjamin    ", time_move(Benjamin, NTRIALS, NMOVES)
+print "BenjaminV2  ", time_move(BenjaminV2, NTRIALS, NMOVES)
+print "TimKautz    ", time_move(TimKautz, NTRIALS, NMOVES)
+print "Anon        ", time_move(Anon, NTRIALS, NMOVES)
+print "Paul        ", time_move(Paul, NTRIALS, NMOVES)
+print "Mario       ", time_move(Mario, NTRIALS, NMOVES)
 
-# TestGame = FirstTry.TwentyFortyEight(4, 4)
-# TestGame.new_tile()
-# TestGame = FirstTry.TwentyFortyEight(10, 10)
-# TestGame.new_tile()
+
+print "\nTiming new_tile() methods:"
+print "FirstTry    ", time_new_tile(FirstTry, NTRIALS, NMOVES)
+print "Benjamin    ", time_new_tile(Benjamin, NTRIALS, NMOVES)
+print "BenjaminV2  ", time_new_tile(BenjaminV2, NTRIALS, NMOVES)
+print "TimKautz    ", time_new_tile(TimKautz, NTRIALS, NMOVES)
+print "Anon        ", time_new_tile(Anon, NTRIALS, NMOVES)
+print "Paul        ", time_new_tile(Paul, NTRIALS, NMOVES)
+print "Mario       ", time_new_tile(Mario, NTRIALS, NMOVES)
+
+print
