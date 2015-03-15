@@ -1,7 +1,5 @@
 """
-Monte Carlo Tic-Tac-Toe Player, as seen on
-Rice University and Coursera Principles of 
-Computing course.
+Monte Carlo Tic-Tac-Toe Player.
 
 This version doesn't make use of SCORE_CURRENT and SCORE_OTHER, 
 squares are always scored as +1, -1, or 0.
@@ -11,11 +9,11 @@ import random, sys
 sys.path.append('../../GameLogic')
 import GameLogic as provided
 
+name = "Rice"
+
 
 # Constants for Monte Carlo simulator
-# You may change the values of these constants as desired, but
-# do not change their names.
-NTRIALS = 2000       # Number of trials to run
+NTRIALS = 1000       # Number of trials to run
 SCORE_CURRENT = 1.0  # Score for squares played by the current player
 SCORE_OTHER = 1.0    # Score for squares played by the other player
 IS_REVERSE = False   # Are we playing the reverse version?
