@@ -1,8 +1,9 @@
 import java.util.Arrays;
 import java.util.ArrayList;
 
-// todo: check win, clone, switch player, play game (maybe in another class?)
+// todo: check win, play game
 // todo: consider a different class separation (logic and board separated, for example)
+// todo: switch player should be in the player class
 
 public class GameLogic {
 
@@ -19,21 +20,41 @@ public class GameLogic {
     public GameLogic(int dimensions, boolean reverse, int[][] board) {
         this.dimensions = dimensions;
         this.reverse = reverse;
-        this.board = board;
+        this.board = deepBoardCopy(board);
     }
 
     public GameLogic(int dimensions, boolean reverse) {
-        this(dimensions, reverse, new int[dimensions][dimensions]);
+        this.dimensions = dimensions;
+        this.reverse = reverse;
+        this.board = new int[dimensions][dimensions];
     }
 
     public GameLogic(int dimensions) {
         this(dimensions, false);
     }
 
+
     public void move(int row, int column, int player) {
         if (board[row][column] == EMPTY) {
             board[row][column] = player;
         }
+    }
+    
+    // Helper for the copy method.
+    private int[][] deepBoardCopy(int[][] original) {
+        if (original == null) {
+            return null;
+        }
+        int[][] boardCopy = new int[dimensions][];
+        for (int i = 0; i < dimensions; i++) {
+            boardCopy[i] = Arrays.copyOf(original[i], dimensions);
+        }
+        return boardCopy;
+    }
+
+    // Returns a deep copy of the object.
+    public GameLogic copy() {
+        return new GameLogic(dimensions, reverse, deepBoardCopy(board));
     }
 
     @Override
@@ -77,13 +98,17 @@ public class GameLogic {
             return "O";
         } else {
             throw new IllegalArgumentException(String.format(
-                "argument must be the integer 1, 2, or 3, your input was %d", player));
+                "argument must be the integer 0, 1, or 2, your input was %d", player));
         }
     }
 
 
     public int[][] getBoard() {
         return board;
+    }
+
+    public int[][] getBoardCopy() {
+        return deepBoardCopy(board);
     }
 
     public boolean getReverse() {
@@ -112,23 +137,25 @@ public class GameLogic {
         return empty;
     }
 
+    public static int switchPlayer(int player) {
+        if (player == PLAYERX) {
+            return PLAYERO;
+        } else {
+            return PLAYERX;
+        }
+    }
+
     public static void main(String[] args) {
         
-        GameLogic game = new GameLogic(3);
-        game.move(0, 0, PLAYERX);
-        game.move(1, 1, PLAYERO);
-        game.move(1, 2, PLAYERX);
-        game.move(2, 1, PLAYERO);
-        ArrayList<Integer[]> emptySquares = game.getEmptySquares();
+        GameLogic game1 = new GameLogic(3);
+        GameLogic game2 = game1.copy();
+        game1.move(0, 0, PLAYERX);
+        game2.move(2, 2, PLAYERO);
+        System.out.println(game1);
+        System.out.println(game2);
 
-        System.out.println(game.toString());
-        for (Integer[] i : emptySquares) {
-            System.out.print(i[0]);
-            System.out.print(" ");
-            System.out.print(i[1]);
-            System.out.print("\n");
-        }
-
+        System.out.println(String.format("%d %d", PLAYERX, switchPlayer(PLAYERX)));
+        System.out.println(String.format("%d %d", PLAYERO, switchPlayer(PLAYERO)));
 
     }
 
