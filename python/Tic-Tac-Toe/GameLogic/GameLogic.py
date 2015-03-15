@@ -175,3 +175,50 @@ def play_game(mc_move_function, ntrials, reverse=False, print_console=False):
             print "Error: unknown winner"
 
     return winner
+
+def play_game_versus(playerX, playerO, ntrials, reverse=False, print_console=False):
+    """
+    Function to play a game with two different MC players. 
+    Returns the tuple (winner, winner name).
+    """
+    # Setup game
+    board = TTTBoard(3, reverse)
+    curplayer = PLAYERX
+    winner = None
+    players = [playerX, playerO]
+    player_index = 0
+    
+    # Run game
+    while winner == None:
+        # Move
+        row, col = players[player_index].mc_move(board, curplayer, ntrials)
+        board.move(row, col, curplayer)
+
+        # Update state
+        winner = board.check_win()
+        curplayer = switch_player(curplayer)
+        player_index = (player_index + 1) % 2
+
+        # Display board
+        if print_console:
+            print board
+            print
+
+    # Ger winner info
+    if winner == PLAYERX or winner == PLAYERO:
+        winner_info = players[winner - 2].name
+    else:
+        winner_info = "Draw"
+        
+    # Print winner
+    if print_console:
+        if winner == PLAYERX:
+            print "X wins!\n"
+        elif winner == PLAYERO:
+            print "O wins!\n"
+        elif winner == DRAW:
+            print "Tie!\n"
+        else:
+            print "Error: unknown winner"
+
+    return (winner, winner_info)
