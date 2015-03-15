@@ -20,7 +20,7 @@ def play_a_game():
     """
     This machine player plays a game against itself, printing each move.
     """
-    play_game(mc_move, NTRIALS, False, True) 
+    play_game(mc_move, NTRIALS, False, False) 
 
 
 def result_test(iterations, ntrials, console_print=False):
