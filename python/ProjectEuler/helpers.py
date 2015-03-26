@@ -8,7 +8,7 @@ def is_prime(n):
     """
     Primality test.
     If n is between 30,000,000 and 341,550,071,728,321 use Miller-Rabin
-    algorithm, else use trial division.
+    algorithm (deterministic in that range), else use trial division.
     """
 
     def mr(n, _known_primes = [2, 3], _precision_for_huge_n=16, ):
