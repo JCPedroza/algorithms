@@ -27,22 +27,22 @@ public class Problem4 {
     // Finds the largest palindrome made from the product of two 3-digit numbers.
     public static int largestPalindromeProduct() {
         int product = 0;
-        int largestProduct = 0;
+        int largestPalindrome = 0;
         int start = 100;
         
         for (int a = 999; a >= 100; a--) {
             for (int b = 999; b >= a; b--) {
                 product = a * b;
-                if (product <= largestProduct) {
+                if (product <= largestPalindrome) {
                     break;
                 }
                 if (isPalindrome(product)) {
-                    largestProduct = product;
+                    largestPalindrome = product;
                 }
             }
         }
 
-        return largestProduct;
+        return largestPalindrome;
     }
 
     public static void main(String[] args) {
