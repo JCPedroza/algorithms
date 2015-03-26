@@ -1,3 +1,7 @@
+"""
+Utilities for running time measurement.
+"""
+
 import time, resource, random
 
 def runtime(f, num, repeats):
@@ -45,8 +49,40 @@ def resource_runtime_range(f, init, end, repeats):
         for j in xrange(init, end):
             f(j)
     end   = resource.getrusage(resource.RUSAGE_SELF)
-    return (end.ru_utime - start.ru_utime, 
+    return (end.ru_utime - start.ru_utime,
             end.ru_stime - start.ru_stime)
+
+def resource_runtime_plot(f, start, end, stride, repeats, verbose=False):
+    """
+    Measures running time of a function using the resource module.
+    The function is run with all the integer values in the given range
+    (start and end), this is repeated n (repeats)times.
+    Returns the tuple (arguments, results, average), a result is the average
+    runtime for that argument, and average is the total average time for all
+    arguments.
+    """
+    arguments = range(start, end, stride)
+    results = [0 for i in arguments]
+    mult = 1.0 / repeats
+    average = 0  
+    
+    if verbose:
+        print "\nmasuring function ", f.__name__
+    for j in xrange(repeats):
+        if verbose:
+            print "\nstarting repeat {0} of {1}".format(j, repeats)
+        for i in xrange(len(arguments)):
+            if verbose:
+                print "measuring function for argument", arguments[i]
+            start = resource.getrusage(resource.RUSAGE_SELF)
+            f(arguments[i])
+            end = resource.getrusage(resource.RUSAGE_SELF)
+            time = (end.ru_utime - start.ru_utime) * mult
+            results[i] += time
+            average += time
+
+    return arguments, results, average
+
 
 
 # Working with iterables
