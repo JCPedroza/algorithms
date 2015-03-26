@@ -10,15 +10,17 @@ all the multiples of 3 or 5 below 1000.
 
 public class Problem1{
 
+    public static final int LIMIT = 1000;
+
     // Is n multiple of 5 or 3?
-    public boolean isMultiple(int n) {
+    public static boolean isMultiple(int n) {
         return n % 3 == 0 || n % 5 == 0;
     }
     
     // Returns the sum of all numbers bellow 1000 that are multiples of 3 or 5.
-    public int solution() {
+    public static int solution() {
         int total = 0;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < LIMIT; i++) {
             if (isMultiple(i)) {
                 total += i;
             }
@@ -28,8 +30,7 @@ public class Problem1{
 
     // Print solution
     public static void main(String[] args) {
-        Problem1 problem = new Problem1();
-        System.out.println(problem.solution());
+        System.out.println(Problem1.solution());
     }
 
 }

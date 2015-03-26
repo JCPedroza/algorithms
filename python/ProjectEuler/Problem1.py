@@ -8,6 +8,8 @@ we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of
 all the multiples of 3 or 5 below 1000.
 """
 
+LIMIT = 1000
+
 def is_multiple(n):
     """
     Helper function, returns True if n is multiple 
@@ -21,7 +23,7 @@ def solution1():
     function is_multiple.
     """
     total = 0
-    for value in range(1000):
+    for value in range(LIMIT):
         if is_multiple(value):
             total += value
     return total
