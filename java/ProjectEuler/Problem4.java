@@ -28,7 +28,6 @@ public class Problem4 {
     public static int largestPalindromeProduct() {
         int product = 0;
         int largestPalindrome = 0;
-        int start = 100;
         
         for (int a = 999; a >= 100; a--) {
             for (int b = 999; b >= a; b--) {
