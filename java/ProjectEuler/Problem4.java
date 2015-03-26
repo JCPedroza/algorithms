@@ -28,14 +28,16 @@ public class Problem4 {
     public static int largestPalindromeProduct() {
         int product = 0;
         int largestProduct = 0;
-
-        for (int a = 100; a <= 999; a++) {
-            for (int b = 100; b <= 999; b++) {
+        int start = 100;
+        
+        for (int a = 999; a >= 100; a--) {
+            for (int b = 999; b >= a; b--) {
                 product = a * b;
+                if (product <= largestProduct) {
+                    break;
+                }
                 if (isPalindrome(product)) {
-                    if (product > largestProduct) {
-                        largestProduct = product;
-                    }
+                    largestProduct = product;
                 }
             }
         }
