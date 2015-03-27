@@ -53,7 +53,7 @@ def is_prime(n):
     def trial_division(n):
         if n < 2:
             return False
-        if n in (2, 3):
+        if n < 4:
             return True
         if n % 2 == 0 or n % 3 == 0:
             return False
