@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Helpers {
-    
-    public static boolean isPrimeTrialDivision(long n) {
+
+    // Primarly test using trial divison.
+    public static boolean isPrimeTrialDivision(int n) {
         if (n < 2) {
             return false;
         }
@@ -12,7 +15,7 @@ public class Helpers {
             return false;
         }
 
-        long limit = (long) Math.sqrt(n);
+        int limit = (int) Math.sqrt(n);
         int divisor = 5;
 
         while (divisor <= limit) {
@@ -23,5 +26,41 @@ public class Helpers {
         }
 
         return true;
+    }
+
+    // Returns the primes up to n using the Sieve of Eratosthenes
+    public static ArrayList<Integer> sieveOfEra(int limit) {
+        int crosslimit = (int) Math.sqrt(limit);
+        boolean[] sieve = new boolean[limit+1];
+        ArrayList<Integer> primes = new ArrayList<Integer>(Arrays.asList(2));
+
+        for (int n = 4; n <= limit; n += 2) {   // mark even mumbers > 2
+            sieve[n] = true;
+        }
+
+        for (int n = 3; n <= crosslimit; n += 2) { 
+            if (!sieve[n]) {   // n not marked, hence prime
+                for (int m = n*n; m <= limit; m += 2*n) {
+                    sieve[m] = true;
+                }
+            }
+        }
+
+        for (int i = 3; i <= limit; i += 2) {
+            if (!sieve[i]) {
+                primes.add(i);
+            }
+        }
+
+        return primes;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> result = sieveOfEra(100);
+
+        for (int n : result) {
+            System.out.println(n);
+        }
+
     }
 }
