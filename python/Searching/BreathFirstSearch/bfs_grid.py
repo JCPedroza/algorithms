@@ -24,13 +24,10 @@ O are in the queue.
 
 import sys
 sys.path.append('../../Tools')
-from tools import Queue
-from tools import Grid
+from tools import Queue, Grid, EMPTY, FULL
 
 HEIGHT = 5
 WIDTH = 5
-EMPTY = 0
-FULL = 1
 
 def bfs(grid, row, col):
     """
