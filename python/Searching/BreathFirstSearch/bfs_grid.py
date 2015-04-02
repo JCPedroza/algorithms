@@ -17,6 +17,9 @@ while boundary is not empty:
 In this example, neighbors cells are the cells located
 up, down, left, and right from a given cell. Diagonals are
 not considered adjacent.
+
+In the print, cells with an X are visited, and cells with an 
+O are in the queue.
 """
 
 import sys
@@ -37,16 +40,19 @@ def bfs(grid, row, col):
     boundary = Queue()            # bsf uses queue dynamics
     boundary.enqueue((row, col))  # put the starting grid in the queue
     visited = [[EMPTY for _ in xrange(WIDTH)] for _ in xrange(HEIGHT)]
+    visited[row][col] = FULL      # set the starting cell to visited
 
     while boundary:    # while the queue is not empty
         current = boundary.dequeue()  # get a grid cell from the queue
-        grid.set_full(current[0], current[1])  # mark it as searched
+        grid.set_marked(current[0], current[1])  # mark it as searched (this is just for the print)
         neighbors = grid.four_neighbors(current[0], current[1]) # get the four neighbor cells:
         print grid                                              # up, down, left, and right
 
         for neighbor in neighbors: # for every neighbor cell
             if not visited[neighbor[0]][neighbor[1]]:  # if it hasn't been visited
-                visited[neighbor[0]][neighbor[1]] = FULL  # mark it as visited
+                visited[neighbor[0]][neighbor[1]] = FULL  # set it as visited
                 boundary.enqueue(neighbor)  # add it to the queue
+                grid.set_full(neighbor[0], neighbor[1])  # set it as full (this is just for the print)
+        print grid
 
 bfs(Grid(HEIGHT, WIDTH), HEIGHT/2, WIDTH/2)
