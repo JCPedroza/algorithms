@@ -1,10 +1,9 @@
 EMPTY = 0
 FULL = 1
 MARKED = 2
+OBSTACLE = 999
 
-STRMAP = {EMPTY: " ",
-          FULL: "O",
-          MARKED: "X"}
+STRMAP = {EMPTY: " ", FULL: "O", MARKED: "X", OBSTACLE: "-"}
 
 class Collection(object):
     """
@@ -82,15 +81,17 @@ class Grid:
     Includes boundary handling
     """
     
-    def __init__(self, grid_height, grid_width):
+    def __init__(self, grid_height, grid_width, strmap={EMPTY: " ", FULL: "O", 
+                 MARKED: "X", OBSTACLE: "-"}):
         """
         Initializes grid to be empty, take height and width of grid as parameters
         Indexed by rows (left to right), then by columns (top to bottom)
         """
         self._grid_height = grid_height
         self._grid_width = grid_width
-        self._cells = [[EMPTY for dummy_col in range(self._grid_width)] 
-                       for dummy_row in range(self._grid_height)]
+        self._strmap = strmap
+        self._cells = [[EMPTY for col in range(self._grid_width)] 
+                       for row in range(self._grid_height)]
                 
     def __str__(self):
         """
@@ -99,13 +100,17 @@ class Grid:
         rep = ""
         for row in range(self._grid_height):
             for col in range(self._grid_width):
-                rep += STRMAP[self._cells[row][col]]
+                the_str = self._strmap[self._cells[row][col]]
+                rep += the_str
                 if col == self._grid_width - 1:
                     rep += "\n"
                 else:
-                    rep += " | "
+                    if len(the_str) == 2:
+                        rep += " | "
+                    else:
+                        rep += "  | "
             if row != self._grid_height - 1:
-                rep += "-" * (4 * self._grid_width - 3)
+                rep += "-" * (5 * self._grid_width - 3)
                 rep += "\n"
         rep += "\n"
         return rep
@@ -122,12 +127,24 @@ class Grid:
         """
         return self._grid_width
 
+    def get_cell(self, row, col):
+        """
+        Return the value of a given cell
+        """
+        return self._cells[row][col]
+
+    def get_list(self):
+        """
+        Return a copy of the cell list
+        """
+        return list(self._cells)
+
     def clear(self):
         """
         Clears grid to be empty
         """
-        self._cells = [[EMPTY for dummy_col in range(self._grid_width)]
-                       for dummy_row in range(self._grid_height)]
+        self._cells = [[EMPTY for col in range(self._grid_width)]
+                       for row in range(self._grid_height)]
                 
     def set_empty(self, row, col):
         """
@@ -143,9 +160,28 @@ class Grid:
 
     def set_marked(self, row, col):
         """
-        Set cell with index (row, col) to be full
+        Set cell with index (row, col) to be marked
         """
         self._cells[row][col] = MARKED
+
+    def set_obstacle(self, row, col):
+        """
+        Set cell with index (row, col) to be an obstacle
+        """
+        self._cells[row][col] = OBSTACLE
+
+    def set_to(self, row, col, value):
+        """
+        Set a cell with an arbitrary value
+        """
+        self._cells[row][col] = value
+
+    def set_all_to(self, value):
+        """
+        Set all cels to the given value.
+        """
+        self._cells = [[value for col in range(self._grid_width)]
+                       for row in range(self._grid_height)]
     
     def is_empty(self, row, col):
         """
