@@ -1,5 +1,10 @@
 EMPTY = 0
 FULL = 1
+MARKED = 2
+
+STRMAP = {EMPTY: " ",
+          FULL: "O",
+          MARKED: "X"}
 
 class Collection(object):
     """
@@ -91,11 +96,19 @@ class Grid:
         """
         Return multi-line string represenation for grid
         """
-        ans = ""
+        rep = ""
         for row in range(self._grid_height):
-            ans += str(self._cells[row])
-            ans += "\n"
-        return ans
+            for col in range(self._grid_width):
+                rep += STRMAP[self._cells[row][col]]
+                if col == self._grid_width - 1:
+                    rep += "\n"
+                else:
+                    rep += " | "
+            if row != self._grid_height - 1:
+                rep += "-" * (4 * self._grid_width - 3)
+                rep += "\n"
+        rep += "\n"
+        return rep
     
     def get_height(self):
         """
@@ -127,6 +140,12 @@ class Grid:
         Set cell with index (row, col) to be full
         """
         self._cells[row][col] = FULL
+
+    def set_marked(self, row, col):
+        """
+        Set cell with index (row, col) to be full
+        """
+        self._cells[row][col] = MARKED
     
     def is_empty(self, row, col):
         """
