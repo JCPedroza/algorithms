@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.math.BigInteger;
 
 public class Helpers {
 
-    // Primarly test using trial divison.
+    /** Primarly test using trial divison. */
     public static boolean isPrimeTrialDivision(int n) {
         if (n < 2) {
             return false;
@@ -28,7 +29,7 @@ public class Helpers {
         return true;
     }
 
-    // Returns the primes up to n using the Sieve of Eratosthenes
+    /** Returns the primes up to n using the Sieve of Eratosthenes. */
     public static ArrayList<Integer> sieveOfEra(int limit) {
         int crosslimit = (int) Math.sqrt(limit);
         boolean[] sieve = new boolean[limit+1];
@@ -53,6 +54,16 @@ public class Helpers {
         }
 
         return primes;
+    }
+
+    /** Returns the number of digits in a BigInteger */
+    public static int digits(BigInteger n) {
+        int count = 0;
+        while (n.compareTo(BigInteger.ZERO) > 0) {
+            n = n.divide(BigInteger.TEN);
+            count++;
+        }
+        return count;
     }
 
     public static void main(String[] args) {
