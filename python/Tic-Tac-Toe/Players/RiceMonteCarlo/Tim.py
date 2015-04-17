@@ -2,7 +2,8 @@
 Monte Carlo Tic-Tac-Toe Player
 """
 
-import random, sys
+import random
+import sys
 sys.path.append('../../GameLogic')
 import GameLogic as provided
 
@@ -79,7 +80,7 @@ def get_best_move(board, scores):
 
     # Create a dict of scores with each free square as key.
     free_scores = dict(((row, col), scores[row][col]) for row, col in free_squares)
-    
+
     # Get the highest score.
     max_score = max(free_scores.values())
 
@@ -107,4 +108,3 @@ def mc_move(board, player, trials):
         mc_update_scores(score_board, clone_board, player)
 
     return get_best_move(board, score_board)
-
