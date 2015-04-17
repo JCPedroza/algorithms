@@ -5,7 +5,7 @@ Provided Code for Tic-Tac-Toe
 # Constants
 EMPTY = 1
 PLAYERX = 2
-PLAYERO = 3 
+PLAYERO = 3
 DRAW = 4
 
 # Map player constants to letters for printing
@@ -13,23 +13,24 @@ STRMAP = {EMPTY: " ",
           PLAYERX: "X",
           PLAYERO: "O"}
 
+
 class TTTBoard:
     """
     Class to represent a Tic-Tac-Toe board.
     """
 
-    def __init__(self, dim, reverse = False, board = None):
+    def __init__(self, dim, reverse=False, board=None):
         self._dim = dim
         self._reverse = reverse
-        if board == None:
+        if board is None:
             # Create empty board
-            self._board = [[EMPTY for dummycol in range(dim)] 
+            self._board = [[EMPTY for dummycol in range(dim)]
                            for dummyrow in range(dim)]
         else:
             # Copy board grid
-            self._board = [[board[row][col] for col in range(dim)] 
+            self._board = [[board[row][col] for col in range(dim)]
                            for row in range(dim)]
-            
+
     def __str__(self):
         """
         Human readable representation of the board.
@@ -52,7 +53,7 @@ class TTTBoard:
         Return the dimension of the board.
         """
         return self._dim
-    
+
     def square(self, row, col):
         """
         Return the status (EMPTY, PLAYERX, PLAYERO) of the square at
@@ -101,7 +102,7 @@ class TTTBoard:
 
         # diags
         diag1 = [board[idx][idx] for idx in dimrng]
-        diag2 = [board[idx][dim - idx -1] 
+        diag2 = [board[idx][dim-idx-1]
                  for idx in dimrng]
         lines.append(diag1)
         lines.append(diag2)
@@ -120,17 +121,18 @@ class TTTBoard:
 
         # game is still in progress
         return None
-            
+
     def clone(self):
         """
         Return a copy of the board.
         """
         return TTTBoard(self._dim, self._reverse, self._board)
 
+
 def switch_player(player):
     """
     Convenience function to switch players.
-    
+
     Returns other player.
     """
     if player == PLAYERX:
@@ -138,20 +140,21 @@ def switch_player(player):
     else:
         return PLAYERX
 
-def play_game(mc_move_function, ntrials, reverse=False, print_console=False):
+
+def play_game(move_function, ntrials, reverse=False, print_console=False):
     """
-    Function to play a game with two MC players. 
+    Function to play a game with two MC players.
     Returns the result of the game.
     """
     # Setup game
     board = TTTBoard(3, reverse)
     curplayer = PLAYERX
     winner = None
-    
+
     # Run game
-    while winner == None:
+    while winner is None:
         # Move
-        row, col = mc_move_function(board, curplayer, ntrials)
+        row, col = move_function(board, curplayer, ntrials)
         board.move(row, col, curplayer)
 
         # Update state
@@ -162,7 +165,7 @@ def play_game(mc_move_function, ntrials, reverse=False, print_console=False):
         if print_console:
             print board
             print
-        
+
     # Print winner
     if print_console:
         if winner == PLAYERX:
@@ -176,9 +179,10 @@ def play_game(mc_move_function, ntrials, reverse=False, print_console=False):
 
     return winner
 
+
 def play_game_versus(playerX, playerO, ntrials, reverse=False, print_console=False):
     """
-    Function to play a game with two different MC players. 
+    Function to play a game with two different MC players.
     Returns the tuple (winner, winner name).
     """
     # Setup game
@@ -187,11 +191,11 @@ def play_game_versus(playerX, playerO, ntrials, reverse=False, print_console=Fal
     winner = None
     players = [playerX, playerO]
     player_index = 0
-    
+
     # Run game
-    while winner == None:
+    while winner is None:
         # Move
-        row, col = players[player_index].mc_move(board, curplayer, ntrials)
+        row, col = players[player_index].move(board, curplayer, ntrials)
         board.move(row, col, curplayer)
 
         # Update state
@@ -209,7 +213,7 @@ def play_game_versus(playerX, playerO, ntrials, reverse=False, print_console=Fal
         winner_info = players[winner - 2].name
     else:
         winner_info = "Draw"
-        
+
     # Print winner
     if print_console:
         if winner == PLAYERX:
