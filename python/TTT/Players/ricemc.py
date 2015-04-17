@@ -7,8 +7,8 @@ squares are always scored as +1, -1, or 0.
 
 import random
 import sys
-sys.path.append('../../GameLogic')
-import GameLogic as provided
+sys.path.append('../GameLogic')
+import gamelogic as provided
 
 name = "Rice"
 
@@ -87,7 +87,7 @@ def get_best_move(board, scores):
     return (max_value[1], max_value[2])
 
 
-def mc_move(board, player, trials):
+def move(board, player, trials):
     """
     Takes a current board, which player the machine player is,
     and the number of trials to run. Uses the Monte Carlo simulation

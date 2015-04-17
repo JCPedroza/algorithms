@@ -1,26 +1,28 @@
 """
-Tests for the RiceMonteCarlo Tic-Tac-Toe machine player.
+Tests for the ricemc Tic-Tac-Toe machine player.
 """
 
-import RiceMonteCarlo, sys
-sys.path.append('../../GameLogic')
-import GameLogic
+import ricemc
+import sys
+sys.path.append('../GameLogic')
+import gamelogic
 
-NTRIALS = RiceMonteCarlo.NTRIALS
-mc_move = RiceMonteCarlo.mc_move
+NTRIALS = ricemc.NTRIALS
+mc_move = ricemc.move
 
-PLAYERX = GameLogic.PLAYERX
-PLAYERO = GameLogic.PLAYERO
-DRAW = GameLogic.DRAW
-play_game = GameLogic.play_game
+PLAYERX = gamelogic.PLAYERX
+PLAYERO = gamelogic.PLAYERO
+DRAW = gamelogic.DRAW
+play_game = gamelogic.play_game
 
 result_str = {DRAW: "draw", PLAYERX: "X", PLAYERO: "O"}
+
 
 def play_a_game():
     """
     This machine player plays a game against itself, printing each move.
     """
-    play_game(mc_move, NTRIALS, False, False) 
+    play_game(mc_move, NTRIALS, False, True)
 
 
 def result_test(iterations, ntrials, console_print=False):
@@ -38,9 +40,10 @@ def result_test(iterations, ntrials, console_print=False):
             print "performed test {0} of {1} with result {2}".format(i+1, iterations, result_str[result])
     return results
 
+
 def test_ntrials(start, end, stride, iterations):
     """
-    Runs tests with different ntrials values. 
+    Runs tests with different ntrials values.
     """
     results = []
     for ntrials in range(start, end, stride):

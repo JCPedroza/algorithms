@@ -5,7 +5,7 @@ Monte Carlo Tic-Tac-Toe Player
 import random
 import sys
 sys.path.append('../../GameLogic')
-import GameLogic as provided
+import gamelogic as provided
 
 name = "Tim"
 
@@ -91,7 +91,7 @@ def get_best_move(board, scores):
     return random.choice(moves)
 
 
-def mc_move(board, player, trials):
+def move(board, player, trials):
     """
     This function takes a current board, which player the machine player is, and the number of trials to run.
     The function should use the Monte Carlo simulation described above to return a move for the machine player in the
