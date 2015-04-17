@@ -1,9 +1,12 @@
-import sys, RiceMonteCarlo, Tim
+import sys
+import RiceMonteCarlo
+import Tim
 sys.path.append('../../GameLogic')
 import GameLogic
 
 trials = 1000
 games = 10
+
 
 def play_game(playerX, playerO):
     return GameLogic.play_game_versus(playerX, playerO, trials)
