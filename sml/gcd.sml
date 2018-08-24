@@ -2,7 +2,7 @@
 fun gcd(a : int, b : int): int = 
     if   b = 0
     then a
-    else gcdi(b, a mod b)
+    else gcd(b, a mod b)
 
 
 
